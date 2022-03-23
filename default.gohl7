@@ -1,0 +1,1 @@
+PID|||{{ .Patient.IdentifiersAsHl7 .Hl7Encoding }}||{{.Patient.Name.AsHl7 .Hl7Encoding }}|{{ .Patient.MotherMaidenName }}|{{ .Patient.DOB.Format "20060102" }}|{{.Patient.Gender}}||{{.Patient.Race.AsHl7 .Hl7Encoding}}|pickup w/ address
