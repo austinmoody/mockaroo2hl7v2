@@ -12,11 +12,11 @@ import (
 )
 
 var (
-	elementDelimiter    = flag.String("component", "^", "HL7v2 Component Delimiter")
-	subElementDelimiter = flag.String("subcomponent", "&", "HL7v2 Subcomponent Delimiter")
-	segmentDelimiter    = flag.String("repetition", "~\r\n", "HL7v2 Repetition Delimiter")
-	inputFile           = flag.String("input", "", "Input File")
-	templateFile        = flag.String("template", "", "Output Template File")
+	componentDelimiter    = flag.String("component", "^", "HL7v2 Component Delimiter")
+	subComponentDelimiter = flag.String("subcomponent", "&", "HL7v2 Subcomponent Delimiter")
+	repetitionDelimiter   = flag.String("repetition", "~\r\n", "HL7v2 Repetition Delimiter")
+	inputFile             = flag.String("input", "", "Input File")
+	templateFile          = flag.String("template", "", "Output Template File")
 )
 
 const JsonArray = "["
@@ -27,17 +27,21 @@ func main() {
 	flag.Parse()
 
 	// TODO read encoding characters from command line args
-	hl7Encoding := Hl7Encoding{Component: "^", SubComponent: "&", Repetition: "~"}
+	hl7encoding := Hl7Encoding{} //Hl7Encoding{Component: "^", SubComponent: "&", Repetition: "~"}
+	hl7encoding.Component = *componentDelimiter
+	hl7encoding.SubComponent = *subComponentDelimiter
+	hl7encoding.Repetition = *repetitionDelimiter
 
 	if *inputFile == "" {
-		ProcessStdin(hl7Encoding)
+		ProcessStdin(hl7encoding)
 	} else {
-		ProcessInputFile(*inputFile, hl7Encoding)
+		ProcessInputFile(*inputFile, hl7encoding)
 	}
 
 }
 
 func ValidJson(rdr io.Reader) (bool, string) {
+	// rename this and pass back err instead of bool...
 	decoder := json.NewDecoder(rdr)
 
 	firstToken, err := decoder.Token()
@@ -63,19 +67,19 @@ func ProcessInputFile(fileName string, hl7encoding Hl7Encoding) {
 
 	inputFile, err := os.Open(fileName)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	jsonValid, jsonType := ValidJson(inputFile)
 
 	if jsonValid != true {
-		panic("Input JSON is invalid")
+		log.Fatal("Input JSON is invalid")
 	}
 
 	// reset so we can decode full input
 	_, err = inputFile.Seek(0, io.SeekStart)
 	if err != nil {
-		panic(err)
+		log.Fatal(err)
 	}
 
 	decoder := json.NewDecoder(inputFile)
@@ -97,12 +101,11 @@ func ProcessStdin(hl7encoding Hl7Encoding) {
 	for s.Scan() {
 		if jsonType == "" {
 			jsonValid, jsonType = ValidJson(bytes.NewReader(s.Bytes()))
+			if jsonValid != true {
+				log.Fatal("Input JSON is invalid")
+			}
 		}
 		buf.Write(s.Bytes())
-	}
-
-	if jsonValid != true {
-		panic("Input JSON is invalid")
 	}
 
 	decoder := json.NewDecoder(bufio.NewReader(&buf))

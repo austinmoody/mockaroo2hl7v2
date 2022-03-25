@@ -160,5 +160,7 @@ type Provider struct {
 
 func GetTemplate() string {
 	// TODO - obviously allow user to specify external template
+	// TODO - replace | in template w/ specified encoding??
+	//        or maybe determine HL7 encoding from template itself?
 	return `PID|||{{ .Patient.IdentifiersAsHl7 .Hl7Encoding }}||{{.Patient.Name.AsHl7 .Hl7Encoding }}|{{ .Patient.MotherMaidenName }}|{{ .Patient.DOB.Format "20060102" }}|{{.Patient.Gender}}||{{.Patient.Race.AsHl7 .Hl7Encoding}}|pickup w/ address`
 }
