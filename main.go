@@ -14,7 +14,7 @@ import (
 var (
 	componentDelimiter    = flag.String("component", "^", "HL7v2 Component Delimiter")
 	subComponentDelimiter = flag.String("subcomponent", "&", "HL7v2 Subcomponent Delimiter")
-	repetitionDelimiter   = flag.String("repetition", "~\r\n", "HL7v2 Repetition Delimiter")
+	repetitionDelimiter   = flag.String("repetition", "~", "HL7v2 Repetition Delimiter")
 	inputFile             = flag.String("input", "", "Input File")
 	templateFile          = flag.String("template", "", "Output Template File")
 )
