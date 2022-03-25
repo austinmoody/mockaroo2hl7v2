@@ -174,7 +174,7 @@ func NewHl7v2Template(encoding Hl7Encoding, templateContents string) Hl7v2Templa
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	// why didn't this sync
 	return t
 }
 
