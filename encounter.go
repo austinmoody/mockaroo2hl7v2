@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"log"
 	"strings"
 	"text/template"
 	"time"
@@ -156,6 +157,25 @@ type Provider struct {
 	Name       Name         `json:"Name"`
 	Degree     string       `json:"Degree"`
 	Role       CodedElement `json:"Role"`
+}
+
+type Hl7v2Template struct {
+	encoding Hl7Encoding
+	contents string
+	template *template.Template
+}
+
+func NewHl7v2Template(encoding Hl7Encoding, templateContents string) Hl7v2Template {
+	t := Hl7v2Template{}
+	t.encoding = encoding
+	t.contents = templateContents
+	var err error
+	t.template, err = template.New("").Parse(templateContents)
+	if err != nil {
+		log.Fatal(err)
+	}
+	// why didn't this sync
+	return t
 }
 
 func GetTemplate() string {
