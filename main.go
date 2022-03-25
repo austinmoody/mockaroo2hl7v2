@@ -29,7 +29,7 @@ func main() {
 	hl7encoding.SubComponent = *subComponentDelimiter
 	hl7encoding.Repetition = *repetitionDelimiter
 	myTemplate := NewHl7v2Template(hl7encoding, "PID|||{{ .Patient.IdentifiersAsHl7 .Hl7Encoding }}||{{.Patient.Name.AsHl7 .Hl7Encoding }}|{{ .Patient.MotherMaidenName }}|{{ .Patient.DOB.Format \"20060102\" }}|{{.Patient.Gender}}||{{.Patient.Race.AsHl7 .Hl7Encoding}}|pickup w/ address")
-	fmt.Println(myTemplate)
+	fmt.Println(myTemplate) // test
 }
 
 func main2() {
