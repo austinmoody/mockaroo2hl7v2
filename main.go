@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bufio"
+	"bytes"
 	"encoding/json"
 	"flag"
 	"fmt"
+	"io"
 	"log"
 	"os"
 )
@@ -15,6 +18,9 @@ var (
 	inputFile           = flag.String("input", "", "Input File")
 	templateFile        = flag.String("template", "", "Output Template File")
 )
+
+const JsonArray = "["
+const JsonObject = "{"
 
 func main() {
 
@@ -31,19 +37,94 @@ func main() {
 
 }
 
+func ValidJson(rdr io.Reader) (bool, string) {
+	decoder := json.NewDecoder(rdr)
+
+	firstToken, err := decoder.Token()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if delimiter, success := firstToken.(json.Delim); success {
+		switch delimiter.String() {
+		case JsonArray:
+			return true, JsonArray
+		case JsonObject:
+			return true, JsonObject
+		default:
+			return false, ""
+		}
+	}
+
+	return false, ""
+}
+
 func ProcessInputFile(fileName string, hl7encoding Hl7Encoding) {
+
 	inputFile, err := os.Open(fileName)
 	if err != nil {
 		panic(err)
 	}
+
+	jsonValid, jsonType := ValidJson(inputFile)
+
+	if jsonValid != true {
+		panic("Input JSON is invalid")
+	}
+
+	// reset so we can decode full input
+	_, err = inputFile.Seek(0, io.SeekStart)
+	if err != nil {
+		panic(err)
+	}
+
 	decoder := json.NewDecoder(inputFile)
 
-	ProcessJsonInput(decoder, hl7encoding)
+	if jsonType == JsonArray {
+		ProcessJsonInput(decoder, hl7encoding)
+	} else {
+		ProcessSingleJsonInput(decoder, hl7encoding)
+	}
 }
 
 func ProcessStdin(hl7encoding Hl7Encoding) {
-	decoder := json.NewDecoder(os.Stdin)
-	ProcessJsonInput(decoder, hl7encoding)
+
+	jsonType := ""
+	jsonValid := false
+
+	buf := bytes.Buffer{}
+	s := bufio.NewScanner(os.Stdin)
+	for s.Scan() {
+		if jsonType == "" {
+			jsonValid, jsonType = ValidJson(bytes.NewReader(s.Bytes()))
+		}
+		buf.Write(s.Bytes())
+	}
+
+	if jsonValid != true {
+		panic("Input JSON is invalid")
+	}
+
+	decoder := json.NewDecoder(bufio.NewReader(&buf))
+
+	if jsonType == JsonArray {
+		ProcessJsonInput(decoder, hl7encoding)
+	} else {
+		ProcessSingleJsonInput(decoder, hl7encoding)
+	}
+
+}
+
+func ProcessSingleJsonInput(decoder *json.Decoder, hl7encoding Hl7Encoding) {
+	var encounter Encounter
+
+	err := decoder.Decode(&encounter)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	encounter.Hl7Encoding = hl7encoding
+	fmt.Printf("%s%s", encounter.AsHl7(), "\u0000")
 }
 
 func ProcessJsonInput(decoder *json.Decoder, hl7encoding Hl7Encoding) {
@@ -64,7 +145,7 @@ func ProcessJsonInput(decoder *json.Decoder, hl7encoding Hl7Encoding) {
 		}
 
 		encounter.Hl7Encoding = hl7encoding
-		fmt.Print(encounter.AsHl7())
+		fmt.Printf("%s%s", encounter.AsHl7(), "\u0000")
 	}
 
 	// JSON array closing
