@@ -175,9 +175,9 @@ func TemplateContents() string {
 }
 
 func DefaultTemplate() string {
-	msh := "MSH|^~\\&|Mirth|Hospital|HIE|HIE|{{ .DateTime.Format \"20060102150405\" }}||ADT^A04|{{ .Utility.Uuid }}|P|2.5.1"
-	evn := "EVN|A04|{{ .DateTime.Format \"20060102150405\" }}"
-	pid := "PID|1||{{ .Patient.IdentifiersAsHl7 .Output.Encoding }}||{{.Patient.Name.AsHl7 .Output.Encoding }}|{{ .Patient.MotherMaidenName }}|{{ .Patient.DOB.Format \"20060102\" }}|{{.Patient.Gender}}||{{.Patient.Race.AsHl7 .Output.Encoding}}|{{.Patient.AddressesAsHl7 .Output.Encoding}}"
+	msh := "MSH|^~\\&|Mirth|Hospital|HIE|HIE|{{ .DateTime.Format \"20060102150405\" }}||ADT^{{.Event}}|{{ .Utility.Uuid }}|P|2.5.1"
+	evn := "EVN|{{.Event}}|{{ .DateTime.Format \"20060102150405\" }}"
+	pid := "PID|1||{{ .Patient.IdentifiersAsHl7 .Output.Encoding }}||{{.Patient.Name.AsHl7 .Output.Encoding }}|{{ .Patient.MotherMaidenName }}|{{ .Patient.DOB.Format \"20060102\" }}|{{.Patient.Gender}}||{{.Patient.Race.AsHl7 .Output.Encoding}}|{{.Patient.AddressesAsHl7 .Output.Encoding}}||{{.Patient.HomePhoneNumbersAsHl7 .Output.Encoding}}"
 	pv1 := "PV1|1|{{ .Class.Identifier }}"
 
 	segments := []string{msh, evn, pid, pv1}

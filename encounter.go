@@ -28,7 +28,8 @@ type Encounter struct {
 	Output    OutputTemplate
 	Patient   Patient      `json:"Patient"`
 	Providers []Provider   `json:"Providers"`
-	Class     CodedElement `json:"PatientClass"` // Add Type... like Admit, Discharge, etc...
+	Class     CodedElement `json:"PatientClass"`
+	Event     string       `json:"Event"`
 	DateTime  time.Time
 	Utility   Utility
 }
@@ -71,6 +72,31 @@ type Patient struct {
 	DeathDateTime          time.Time                   `json:"DeathDateTime"`
 }
 
+func (p Patient) HomePhoneNumbersAsHl7(encoding Hl7Encoding) string {
+	phones := p.PhonesByUseCode("PRN")
+	phones = append(phones, p.PhonesByUseCode("ORN")...)
+	phones = append(phones, p.PhonesByUseCode("NET")...)
+
+	var phonesHl7 []string
+	for _, phone := range phones {
+		phonesHl7 = append(phonesHl7, phone.AsHl7(encoding))
+	}
+
+	return strings.Join(phonesHl7, encoding.Repetition)
+
+}
+
+func (p Patient) PhonesByUseCode(useCode string) []ExtendedTelecommunication {
+	var phones []ExtendedTelecommunication
+
+	for i := range p.Phones {
+		if p.Phones[i].UseCode == useCode {
+			phones = append(phones, p.Phones[i])
+		}
+	}
+
+	return phones
+}
 func (p Patient) IdentifierAsHl7(idTypeCode string, encoding Hl7Encoding) string {
 	var id Identifier
 	for i := range p.Ids {
@@ -169,6 +195,25 @@ type ExtendedTelecommunication struct {
 	ExtensionPrefix            string `json:"ExtensionPrefix"`
 	SpeedDialCode              string `json:"SpeedDialCode"`
 	UnformattedTelephoneNumber string `json:"UnformattedTelephoneNumber"`
+}
+
+func (et ExtendedTelecommunication) AsHl7(encoding Hl7Encoding) string {
+	ets := []string{
+		et.TelephoneNumber,
+		et.UseCode,
+		et.EquipmentType,
+		et.EmailAddress,
+		et.CountryCode,
+		et.AreaCode,
+		et.LocalNumber,
+		et.Extension,
+		et.AnyText,
+		et.ExtensionPrefix,
+		et.SpeedDialCode,
+		et.UnformattedTelephoneNumber,
+	}
+
+	return strings.Join(ets, encoding.Component)
 }
 
 type DriversLicense struct {
