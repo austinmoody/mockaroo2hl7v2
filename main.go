@@ -9,14 +9,12 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 )
 
 var (
-	componentDelimiter    = flag.String("component", "^", "HL7v2 Component Delimiter")
-	subComponentDelimiter = flag.String("subcomponent", "&", "HL7v2 Subcomponent Delimiter")
-	repetitionDelimiter   = flag.String("repetition", "~", "HL7v2 Repetition Delimiter")
-	inputFile             = flag.String("input", "", "Input File")
-	templateFile          = flag.String("template", "", "Output Template File")
+	inputFile    = flag.String("input", "", "Input File")
+	templateFile = flag.String("template", "", "Output Template File")
 )
 
 const JsonArray = "["
@@ -24,28 +22,16 @@ const JsonObject = "{"
 
 func main() {
 
-	hl7encoding := Hl7Encoding{} //Hl7Encoding{Component: "^", SubComponent: "&", Repetition: "~"}
-	hl7encoding.Component = *componentDelimiter
-	hl7encoding.SubComponent = *subComponentDelimiter
-	hl7encoding.Repetition = *repetitionDelimiter
-	myTemplate := NewHl7v2Template(hl7encoding, "PID|||{{ .Patient.IdentifiersAsHl7 .Hl7Encoding }}||{{.Patient.Name.AsHl7 .Hl7Encoding }}|{{ .Patient.MotherMaidenName }}|{{ .Patient.DOB.Format \"20060102\" }}|{{.Patient.Gender}}||{{.Patient.Race.AsHl7 .Hl7Encoding}}|pickup w/ address")
-	fmt.Println(myTemplate) // test
-}
-
-func main2() {
-
 	flag.Parse()
 
-	// TODO read encoding characters from command line args
-	hl7encoding := Hl7Encoding{} //Hl7Encoding{Component: "^", SubComponent: "&", Repetition: "~"}
-	hl7encoding.Component = *componentDelimiter
-	hl7encoding.SubComponent = *subComponentDelimiter
-	hl7encoding.Repetition = *repetitionDelimiter
+	templateContent := TemplateContents()
+	template := NewOutputTemplate(templateContent)
+	encounter := NewEncounter(template)
 
 	if *inputFile == "" {
-		ProcessStdin(hl7encoding)
+		ProcessStdin(&encounter)
 	} else {
-		ProcessInputFile(*inputFile, hl7encoding)
+		ProcessInputFile(*inputFile, &encounter)
 	}
 
 }
@@ -73,7 +59,7 @@ func ValidJson(rdr io.Reader) (bool, string) {
 	return false, ""
 }
 
-func ProcessInputFile(fileName string, hl7encoding Hl7Encoding) {
+func ProcessInputFile(fileName string, encounter *Encounter) {
 
 	inputFile, err := os.Open(fileName)
 	if err != nil {
@@ -95,13 +81,13 @@ func ProcessInputFile(fileName string, hl7encoding Hl7Encoding) {
 	decoder := json.NewDecoder(inputFile)
 
 	if jsonType == JsonArray {
-		ProcessJsonInput(decoder, hl7encoding)
+		ProcessJsonInput(decoder, encounter)
 	} else {
-		ProcessSingleJsonInput(decoder, hl7encoding)
+		ProcessSingleJsonInput(decoder, encounter)
 	}
 }
 
-func ProcessStdin(hl7encoding Hl7Encoding) {
+func ProcessStdin(encounter *Encounter) {
 
 	jsonType := ""
 	jsonValid := false
@@ -121,26 +107,27 @@ func ProcessStdin(hl7encoding Hl7Encoding) {
 	decoder := json.NewDecoder(bufio.NewReader(&buf))
 
 	if jsonType == JsonArray {
-		ProcessJsonInput(decoder, hl7encoding)
+		ProcessJsonInput(decoder, encounter)
 	} else {
-		ProcessSingleJsonInput(decoder, hl7encoding)
+		ProcessSingleJsonInput(decoder, encounter)
 	}
 
 }
 
-func ProcessSingleJsonInput(decoder *json.Decoder, hl7encoding Hl7Encoding) {
-	var encounter Encounter
+func ProcessSingleJsonInput(decoder *json.Decoder, encounter *Encounter) {
+	//var encounter Encounter
+	//encounter := NewEncounter()
 
 	err := decoder.Decode(&encounter)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	encounter.Hl7Encoding = hl7encoding
+	//encounter.Hl7Encoding = hl7template.encoding
 	fmt.Printf("%s%s", encounter.AsHl7(), "\u0000")
 }
 
-func ProcessJsonInput(decoder *json.Decoder, hl7encoding Hl7Encoding) {
+func ProcessJsonInput(decoder *json.Decoder, encounter *Encounter) {
 
 	// JSON array opening
 	_, err := decoder.Token()
@@ -150,14 +137,14 @@ func ProcessJsonInput(decoder *json.Decoder, hl7encoding Hl7Encoding) {
 
 	// Loop JSON Array Values
 	for decoder.More() {
-		var encounter Encounter
+		//var encounter Encounter
 
 		err := decoder.Decode(&encounter)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		encounter.Hl7Encoding = hl7encoding
+		//encounter.Hl7Encoding = hl7template.encoding
 		fmt.Printf("%s%s", encounter.AsHl7(), "\u0000")
 	}
 
@@ -166,4 +153,34 @@ func ProcessJsonInput(decoder *json.Decoder, hl7encoding Hl7Encoding) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func TemplateContents() string {
+	templateContent := ""
+	if *templateFile == "" {
+		templateContent = DefaultTemplate()
+	} else {
+		templateFileContents, err := os.Open(*templateFile)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		scanner := bufio.NewScanner(templateFileContents)
+		for scanner.Scan() {
+			templateContent += scanner.Text()
+		}
+	}
+
+	return templateContent
+}
+
+func DefaultTemplate() string {
+	msh := "MSH|^~\\&|Mirth|Hospital|HIE|HIE|{{ .DateTime.Format \"20060102150405\" }}||ADT^A04|{{ .Utility.Uuid }}|P|2.5.1"
+	evn := "EVN|A04|{{ .DateTime.Format \"20060102150405\" }}"
+	pid := "PID|1||{{ .Patient.IdentifiersAsHl7 .Output.Encoding }}||{{.Patient.Name.AsHl7 .Output.Encoding }}|{{ .Patient.MotherMaidenName }}|{{ .Patient.DOB.Format \"20060102\" }}|{{.Patient.Gender}}||{{.Patient.Race.AsHl7 .Output.Encoding}}|pickup w/ address"
+	pv1 := "PV1|1|{{ .Class.Identifier }}"
+
+	segments := []string{msh, evn, pid, pv1}
+
+	return strings.Join(segments, "\n")
 }

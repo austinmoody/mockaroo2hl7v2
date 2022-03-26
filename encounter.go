@@ -2,38 +2,46 @@ package main
 
 import (
 	"bytes"
+	"github.com/google/uuid"
 	"log"
+	"regexp"
 	"strings"
 	"text/template"
 	"time"
 )
 
 type Hl7Encoding struct {
+	Field        string `default:"|"`
 	Component    string `default:"^"`
 	SubComponent string `default:"&"`
 	Repetition   string `default:"~"`
+	Escape       string `default:"\\"`
+}
+
+type Utility string
+
+func (u Utility) Uuid() string {
+	return uuid.New().String()
 }
 
 type Encounter struct {
-	Hl7Encoding  Hl7Encoding
-	Patient      Patient      `json:"Patient"`
-	Providers    []Provider   `json:"Providers"`
-	PatientClass CodedElement `json:"PatientClass"`
+	Output    OutputTemplate
+	Patient   Patient      `json:"Patient"`
+	Providers []Provider   `json:"Providers"`
+	Class     CodedElement `json:"PatientClass"` // Add Type... like Admit, Discharge, etc...
+	DateTime  time.Time
+	Utility   Utility
+}
+
+func NewEncounter(hl7template OutputTemplate) Encounter {
+	return Encounter{DateTime: time.Now(), Output: hl7template}
 }
 
 func (e Encounter) AsHl7() string {
 
-	templateString := GetTemplate()
-
-	template, err := template.New("").Parse(templateString)
-	//template, err := template.ParseFiles("default.gohl7")
-	if err != nil {
-		panic(err)
-	}
-
 	hl7 := new(bytes.Buffer)
 
-	template.Execute(hl7, e)
+	e.Output.Template.Execute(hl7, e)
 
 	return hl7.String()
 }
@@ -159,28 +167,48 @@ type Provider struct {
 	Role       CodedElement `json:"Role"`
 }
 
-type Hl7v2Template struct {
-	encoding Hl7Encoding
-	contents string
-	template *template.Template
+type OutputTemplate struct {
+	Encoding Hl7Encoding
+	Contents string
+	Template *template.Template
 }
 
-func NewHl7v2Template(encoding Hl7Encoding, templateContents string) Hl7v2Template {
-	t := Hl7v2Template{}
-	t.encoding = encoding
-	t.contents = templateContents
+func NewOutputTemplate(templateContents string) OutputTemplate {
+	t := OutputTemplate{}
+	t.Encoding = GetHl7Encoding(templateContents)
+	t.Contents = templateContents
 	var err error
-	t.template, err = template.New("").Parse(templateContents)
+	t.Template, err = template.New("").Parse(templateContents)
 	if err != nil {
 		log.Fatal(err)
 	}
-	// why didn't this sync
+
 	return t
 }
 
-func GetTemplate() string {
-	// TODO - obviously allow user to specify external template
-	// TODO - replace | in template w/ specified encoding??
-	//        or maybe determine HL7 encoding from template itself?
-	return `PID|||{{ .Patient.IdentifiersAsHl7 .Hl7Encoding }}||{{.Patient.Name.AsHl7 .Hl7Encoding }}|{{ .Patient.MotherMaidenName }}|{{ .Patient.DOB.Format "20060102" }}|{{.Patient.Gender}}||{{.Patient.Race.AsHl7 .Hl7Encoding}}|pickup w/ address`
+func GetHl7Encoding(templateContents string) Hl7Encoding {
+	var encoding = Hl7Encoding{}
+	rgx := regexp.MustCompile(`^(?P<segment>MSH)(?P<field>.{1})(?P<component>.{1})(?P<repetition>.{1})(?P<escape>.{1})(?P<subcomponent>.{1})(?P<field2>.{1})`)
+
+	matches := rgx.FindStringSubmatch(templateContents)
+
+	segment := rgx.SubexpIndex("segment")
+	field := rgx.SubexpIndex("field")
+	component := rgx.SubexpIndex("component")
+	repetition := rgx.SubexpIndex("repetition")
+	escape := rgx.SubexpIndex("escape")
+	subcomponent := rgx.SubexpIndex("subcomponent")
+	field2 := rgx.SubexpIndex("field2")
+
+	// We expect the segment to be MSH and the first match after the segment and the last matched character to be the same
+	// So given MSH|^~\&|... we expect 1st after the segment and last matched to be |
+	if matches != nil && matches[segment] == "MSH" && matches[field] == matches[field2] {
+		encoding.Component = matches[component]
+		encoding.SubComponent = matches[subcomponent]
+		encoding.Repetition = matches[repetition]
+		encoding.Escape = matches[escape]
+		encoding.Field = matches[field]
+	}
+
+	return encoding
 }
