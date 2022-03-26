@@ -91,6 +91,15 @@ func (p Patient) IdentifiersAsHl7(encoding Hl7Encoding) string {
 	return strings.Join(identifiers, encoding.Repetition)
 }
 
+func (p Patient) AddressesAsHl7(encoding Hl7Encoding) string {
+	var addresses []string
+	for _, address := range p.Addresses {
+		addresses = append(addresses, address.AsHl7(encoding))
+	}
+
+	return strings.Join(addresses, encoding.Repetition)
+}
+
 type Name struct {
 	Family string `json:"Family"`
 	Given  string `json:"Given"`
@@ -139,6 +148,11 @@ type ExtendedAddress struct {
 	Zip     string `json:"Zip"`
 	Country string `json:"Country"`
 	Type    string `json:"Type"`
+}
+
+func (ea ExtendedAddress) AsHl7(encoding Hl7Encoding) string {
+	eas := []string{ea.Line1, ea.Line2, ea.City, ea.State, ea.Zip, ea.Country, ea.Type}
+	return strings.Join(eas, encoding.Component)
 }
 
 type ExtendedTelecommunication struct {
