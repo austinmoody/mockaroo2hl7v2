@@ -41,7 +41,10 @@ func (e Encounter) AsHl7() string {
 
 	hl7 := new(bytes.Buffer)
 
-	e.Output.Template.Execute(hl7, e)
+	err := e.Output.Template.Execute(hl7, e)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	return hl7.String()
 }
@@ -188,7 +191,7 @@ func NewOutputTemplate(templateContents string) OutputTemplate {
 
 func GetHl7Encoding(templateContents string) Hl7Encoding {
 	var encoding = Hl7Encoding{}
-	rgx := regexp.MustCompile(`^(?P<segment>MSH)(?P<field>.{1})(?P<component>.{1})(?P<repetition>.{1})(?P<escape>.{1})(?P<subcomponent>.{1})(?P<field2>.{1})`)
+	rgx := regexp.MustCompile(`^(?P<segment>MSH)(?P<field>.)(?P<component>.)(?P<repetition>.)(?P<escape>.)(?P<subcomponent>.)(?P<field2>.)`)
 
 	matches := rgx.FindStringSubmatch(templateContents)
 
