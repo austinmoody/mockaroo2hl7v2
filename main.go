@@ -13,12 +13,17 @@ import (
 )
 
 var (
-	inputFile    = flag.String("input", "", "Input File")
-	templateFile = flag.String("template", "", "Output Template File")
+	inputFile    = flag.String("input", "", "Input File.  STDIN used if not specified")
+	templateFile = flag.String("template", "", "Output Template File.  Default can be found in main.go")
+	mllp         = flag.Bool("mllp", false, "Wrap each message in MLLP envelope?  Default is false.")
+	print0       = flag.Bool("print0", false, "End each message with ASCII NUL?  Default is false.")
 )
 
 const JsonArray = "["
 const JsonObject = "{"
+const MllpStart = "\x0b"
+const MllpEnd = "\x1c\x0d"
+const NulChar = "\u0000"
 
 func main() {
 
@@ -29,11 +34,10 @@ func main() {
 	encounter := NewEncounter(template)
 
 	if *inputFile == "" {
-		ProcessStdin(&encounter)
+		ProcessStdin(&encounter, *mllp, *print0)
 	} else {
-		ProcessInputFile(*inputFile, &encounter)
+		ProcessInputFile(*inputFile, &encounter, *mllp, *print0)
 	}
-
 }
 
 func ValidJson(rdr io.Reader) (bool, string) {
@@ -59,7 +63,7 @@ func ValidJson(rdr io.Reader) (bool, string) {
 	return false, ""
 }
 
-func ProcessInputFile(fileName string, encounter *Encounter) {
+func ProcessInputFile(fileName string, encounter *Encounter, mllp bool, print0 bool) {
 
 	inputFile, err := os.Open(fileName)
 	if err != nil {
@@ -81,13 +85,13 @@ func ProcessInputFile(fileName string, encounter *Encounter) {
 	decoder := json.NewDecoder(inputFile)
 
 	if jsonType == JsonArray {
-		ProcessJsonInput(decoder, encounter)
+		ProcessJsonInput(decoder, encounter, mllp, print0)
 	} else {
-		ProcessSingleJsonInput(decoder, encounter)
+		ProcessSingleJsonInput(decoder, encounter, mllp, print0)
 	}
 }
 
-func ProcessStdin(encounter *Encounter) {
+func ProcessStdin(encounter *Encounter, mllp bool, print0 bool) {
 
 	jsonType := ""
 	jsonValid := false
@@ -107,14 +111,13 @@ func ProcessStdin(encounter *Encounter) {
 	decoder := json.NewDecoder(bufio.NewReader(&buf))
 
 	if jsonType == JsonArray {
-		ProcessJsonInput(decoder, encounter)
+		ProcessJsonInput(decoder, encounter, mllp, print0)
 	} else {
-		ProcessSingleJsonInput(decoder, encounter)
+		ProcessSingleJsonInput(decoder, encounter, mllp, print0)
 	}
-
 }
 
-func ProcessSingleJsonInput(decoder *json.Decoder, encounter *Encounter) {
+func ProcessSingleJsonInput(decoder *json.Decoder, encounter *Encounter, mllp bool, print0 bool) {
 	//var encounter Encounter
 	//encounter := NewEncounter()
 
@@ -123,11 +126,35 @@ func ProcessSingleJsonInput(decoder *json.Decoder, encounter *Encounter) {
 		log.Fatal(err)
 	}
 
+	mllpStart := ""
+	mllpEnd := ""
+	if mllp {
+		mllpStart = MllpStart
+		mllpEnd = MllpEnd
+	}
+
+	printZero := ""
+	if print0 {
+		printZero = NulChar
+	}
+
 	//encounter.Hl7Encoding = hl7template.encoding
-	fmt.Printf("%s%s", encounter.AsHl7(), "\u0000")
+	fmt.Printf("%s%s%s%s", mllpStart, encounter.AsHl7(), mllpEnd, printZero)
 }
 
-func ProcessJsonInput(decoder *json.Decoder, encounter *Encounter) {
+func ProcessJsonInput(decoder *json.Decoder, encounter *Encounter, mllp bool, print0 bool) {
+
+	mllpStart := ""
+	mllpEnd := ""
+	if mllp {
+		mllpStart = MllpStart
+		mllpEnd = MllpEnd
+	}
+
+	printZero := ""
+	if print0 {
+		printZero = NulChar
+	}
 
 	// JSON array opening
 	_, err := decoder.Token()
@@ -144,8 +171,7 @@ func ProcessJsonInput(decoder *json.Decoder, encounter *Encounter) {
 			log.Fatal(err)
 		}
 
-		//encounter.Hl7Encoding = hl7template.encoding
-		fmt.Printf("%s%s", encounter.AsHl7(), "\u0000")
+		fmt.Printf("%s%s%s%s", mllpStart, encounter.AsHl7(), mllpEnd, printZero)
 	}
 
 	// JSON array closing
@@ -177,10 +203,10 @@ func TemplateContents() string {
 func DefaultTemplate() string {
 	msh := "MSH|^~\\&|Mirth|Hospital|HIE|HIE|{{ .DateTime.Format \"20060102150405\" }}||ADT^{{.Event}}|{{ .Utility.Uuid }}|P|2.5.1"
 	evn := "EVN|{{.Event}}|{{ .DateTime.Format \"20060102150405\" }}"
-	pid := "PID|1||{{ .Patient.IdentifiersAsHl7 .Output.Encoding }}||{{.Patient.Name.AsHl7 .Output.Encoding }}|{{ .Patient.MotherMaidenName }}|{{ .Patient.DOB.Format \"20060102\" }}|{{.Patient.Gender}}||{{.Patient.Race.AsHl7 .Output.Encoding}}|{{.Patient.AddressesAsHl7 .Output.Encoding}}||{{.Patient.HomePhoneNumbersAsHl7 .Output.Encoding}}"
+	pid := "PID|1||{{ .Patient.IdentifiersAsHl7 .Output.Encoding }}||{{.Patient.Name.AsHl7 .Output.Encoding }}|{{ .Patient.MotherMaidenName }}|{{ .Patient.DOB.Format \"20060102\" }}|{{.Patient.Gender}}||{{.Patient.Race.AsHl7 .Output.Encoding}}|{{.Patient.AddressesAsHl7 .Output.Encoding}}||{{.Patient.HomePhoneNumbersAsHl7 .Output.Encoding}}|{{.Patient.WorkPhoneNumbersAsHl7 .Output.Encoding}}|{{.Patient.Language.Identifier}}|{{.Patient.MaritalStatus.AsHl7 .Output.Encoding}}|{{.Patient.Religion.Identifier}}|{{.Patient.IdentifierAsHl7 \"AN\" .Output.Encoding}}|{{.Patient.SSN}}|{{.Patient.DriversLicense.AsHl7 .Output.Encoding}}||{{.Patient.EthnicGroup.Identifier}}||{{.Patient.MultipleBirthIndicator}}|{{.Patient.BirthOrder}}||||{{.Patient.DeathDateTime.Format \"20060102\"}}|{{.Patient.DeathIndicator}}"
 	pv1 := "PV1|1|{{ .Class.Identifier }}"
 
 	segments := []string{msh, evn, pid, pv1}
 
-	return strings.Join(segments, "\n")
+	return strings.Join(segments, "\x0d")
 }

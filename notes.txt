@@ -4,3 +4,5 @@ jq -c '.[] | objects' ~/Downloads/mockaroohl7.json | while read obj ; do echo $o
 Array of objects ran through the program, with each HL7 saved to a different file.
 cat ~/Downloads/mockaroohl7.json| go run main.go encounter.go | xargs -0 sh -c 'for i; do echo "$i" > ~/Downloads/austintemp/austin."$RANDOM";done' _
 
+Array of objects, each wrapped in MLLP envelop, sent via netcat to a listener
+cat ~/Downloads/HL7JSON.json | go run main.go encounter.go -mllp=true -print0=true | xargs -0 sh -c 'for i; do echo "$i" | netcat -c 10.0.0.50 6661 ;done' _

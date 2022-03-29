@@ -72,18 +72,26 @@ type Patient struct {
 	DeathDateTime          time.Time                   `json:"DeathDateTime"`
 }
 
-func (p Patient) HomePhoneNumbersAsHl7(encoding Hl7Encoding) string {
-	phones := p.PhonesByUseCode("PRN")
-	phones = append(phones, p.PhonesByUseCode("ORN")...)
-	phones = append(phones, p.PhonesByUseCode("NET")...)
-
+func (p Patient) PhoneNumbersAsHl7(phones []ExtendedTelecommunication, encoding Hl7Encoding) string {
 	var phonesHl7 []string
 	for _, phone := range phones {
 		phonesHl7 = append(phonesHl7, phone.AsHl7(encoding))
 	}
 
 	return strings.Join(phonesHl7, encoding.Repetition)
+}
 
+func (p Patient) HomePhoneNumbersAsHl7(encoding Hl7Encoding) string {
+	phones := p.PhonesByUseCode("PRN")
+	phones = append(phones, p.PhonesByUseCode("ORN")...)
+	phones = append(phones, p.PhonesByUseCode("NET")...)
+
+	return p.PhoneNumbersAsHl7(phones, encoding)
+}
+
+func (p Patient) WorkPhoneNumbersAsHl7(encoding Hl7Encoding) string {
+	phones := p.PhonesByUseCode("WPN")
+	return p.PhoneNumbersAsHl7(phones, encoding)
 }
 
 func (p Patient) PhonesByUseCode(useCode string) []ExtendedTelecommunication {
@@ -220,6 +228,11 @@ type DriversLicense struct {
 	LicenseNumber  string    `json:"Number"`
 	State          string    `json:"State"`
 	ExpirationDate time.Time `json:"ExpirationDate"`
+}
+
+func (dl DriversLicense) AsHl7(encoding Hl7Encoding) string {
+	dls := []string{dl.LicenseNumber, dl.State, dl.ExpirationDate.Format("20060102")}
+	return strings.Join(dls, encoding.Component)
 }
 
 type Provider struct {
