@@ -249,7 +249,7 @@ Looking at the contents of the examples.hl7 file you'll see several HL7 messages
 Now, lets say that we want each generated HL7 message saved to a separate file:
 
 ```bash
-
+cat HL7JSON.json | go run main.go encounter.go -print0 | xargs -0 sh -c 'for i; do echo "$i" > example"$RANDOM".hl7;done' _
 ```
 
 The input file having 3 JSON objects, we will see 3 separate files on disk:
@@ -264,6 +264,18 @@ Each file will have one HL7 message in it.
 
 ## Templates
 
+To generate HL7 messages the Encounter object (found in encounter.go) is passed to a Go [Text Template](https://pkg.go.dev/text/template).
+
+If an external template is not specified (via the -template argument) a default is used.  The default can be found in main.go in the DefaultTemplate function.
+
+Getting familiar with the Encounter object while looking at the default template is the best way to understand how to create your own.
+
+Will add some examples here at some point.
+
 ## Mockaroo Setup
 
-TODO
+mockaroo2hl7v2 expects the input to be JSON of a specific layout. A generated JSON schema is in this repo named hl7_schema.json.
+
+You could generate the JSON in any way you want.  I use Mockaroo for this, hence the mockaroo2hl7v2 name.
+
+I won't go into specifics about using Mockaroo, but it is a great tool if you need to generate fake data.  If you want to use Mockaroo, sign up for an account and import the file: HL7JSON.mockaroo.json located in this repo.  From the Mockaroo Schemas page hit the Restore From Backup button to make that happen.

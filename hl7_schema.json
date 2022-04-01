@@ -1,0 +1,2352 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "array",
+  "title": "The root schema",
+  "description": "The root schema comprises the entire JSON document.",
+  "default": [],
+  "examples": [
+    [
+      {
+        "Patient": {
+          "Ids": [
+            {
+              "IdNumber": "PG23FK030030",
+              "CheckDigit": "2",
+              "CheckDigitScheme": "BCV",
+              "IdType": "MR"
+            },
+            {
+              "IdNumber": "TO64MN065772",
+              "CheckDigit": "2",
+              "CheckDigitScheme": "BCV",
+              "IdType": "AN"
+            },
+            {
+              "IdNumber": "LR78DM885590",
+              "CheckDigit": "8",
+              "CheckDigitScheme": "BCV",
+              "IdType": "AND"
+            },
+            {
+              "IdNumber": "ID75SM136214",
+              "CheckDigit": "4",
+              "CheckDigitScheme": "NPI",
+              "IdType": "ANT"
+            }
+          ],
+          "Name": {
+            "Family": "Patrickson",
+            "Given": "Lillis",
+            "Second": "I",
+            "Suffix": null,
+            "Prefix": null
+          },
+          "MotherMaidenName": "Tallboy",
+          "DOB": "1998-01-18T16:48:01Z",
+          "Gender": "F",
+          "Race": {
+            "Id": "2076-8",
+            "Text": "Native Hawaiian or Other Pacific Islander",
+            "CodingSystem": "HL70005"
+          },
+          "Address": [
+            {
+              "Line1": "76255 Harbort Park",
+              "Line2": "Number 18",
+              "City": "Memphis",
+              "State": "TN",
+              "Zip": "38136",
+              "Country": "US",
+              "Type": "M"
+            }
+          ],
+          "Comm": [
+            {
+              "UseCode": "PRN",
+              "Type": "CP",
+              "PhoneNumber": "5791303873",
+              "Email": "",
+              "CountryCode": "+234",
+              "AreaCode": "579",
+              "LocalNumber": "1303873",
+              "UnformattedTelephoneNumber": "2345791303873"
+            },
+            {
+              "UseCode": "ORN",
+              "Type": "PH",
+              "PhoneNumber": "4108438947",
+              "Email": "",
+              "CountryCode": "+86",
+              "AreaCode": "410",
+              "LocalNumber": "8438947",
+              "UnformattedTelephoneNumber": "864108438947"
+            },
+            {
+              "UseCode": "WPN",
+              "Type": "CP",
+              "PhoneNumber": "5689724029",
+              "Email": "",
+              "CountryCode": "+62",
+              "AreaCode": "568",
+              "LocalNumber": "9724029",
+              "UnformattedTelephoneNumber": "625689724029"
+            },
+            {
+              "UseCode": "NET",
+              "Type": "X.400",
+              "PhoneNumber": "",
+              "Email": "rscudders3@hexun.com",
+              "CountryCode": "",
+              "AreaCode": "",
+              "LocalNumber": "",
+              "UnformattedTelephoneNumber": ""
+            },
+            {
+              "UseCode": "NET",
+              "Type": "X.400",
+              "PhoneNumber": "",
+              "Email": "ogreed4@globo.com",
+              "CountryCode": "",
+              "AreaCode": "",
+              "LocalNumber": "",
+              "UnformattedTelephoneNumber": ""
+            },
+            {
+              "UseCode": "PRS",
+              "Type": "PH",
+              "PhoneNumber": "8043015638",
+              "Email": "",
+              "CountryCode": "+62",
+              "AreaCode": "804",
+              "LocalNumber": "3015638",
+              "UnformattedTelephoneNumber": "628043015638"
+            }
+          ],
+          "Language": {
+            "Id": "pl",
+            "Text": "Polish",
+            "CodingSystem": "urn:ietf:bcp:47"
+          },
+          "MaritalStatus": {
+            "Id": "O",
+            "Text": "Other",
+            "CodingSystem": "HL70002"
+          },
+          "Religion": {
+            "Id": "HOT",
+            "Text": "Hindu: Other",
+            "CodingSystem": "HL70006"
+          },
+          "SSN": "661-41-7685",
+          "DriversLicense": {
+            "Number": "1913688611",
+            "State": "TN",
+            "ExpirationDate": "2023-03-28T16:48:01Z"
+          },
+          "EthnicGroup": {
+            "Id": "N",
+            "Text": "Not Hispanic or Latino",
+            "CodingSystem": "HL70189"
+          },
+          "MultipleBirthIndicator": "Y",
+          "BirthOrder": 5,
+          "DeathIndicator": "Y",
+          "DeathDateTime": "2022-03-27T16:48:01Z"
+        },
+        "Providers": [
+          {
+            "Id": {
+              "IdNumber": "714CW28081",
+              "CheckDigit": "W",
+              "CheckDigitScheme": "NPI",
+              "IdType": "NPI"
+            },
+            "Degree": "HS",
+            "Name": {
+              "Family": "O' Bee",
+              "Given": "Jacklin",
+              "Second": "B",
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "B",
+            "Role": {
+              "Id": "PP",
+              "Text": "Primary Care Provider",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "031ZG66038",
+              "CheckDigit": "H",
+              "CheckDigitScheme": "M11",
+              "IdType": "DEA"
+            },
+            "Degree": "MDA",
+            "Name": {
+              "Family": "Speddin",
+              "Given": "Wood",
+              "Second": "T",
+              "Suffix": "III",
+              "Prefix": null
+            },
+            "NameTypeCode": "TEMP",
+            "Role": {
+              "Id": "AT",
+              "Text": "Attending",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "224VW91526",
+              "CheckDigit": "I",
+              "CheckDigitScheme": "ISO",
+              "IdType": "MB"
+            },
+            "Degree": "BS",
+            "Name": {
+              "Family": "Bigby",
+              "Given": "Joshua",
+              "Second": "M",
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "T",
+            "Role": {
+              "Id": "RP",
+              "Text": "Referring Provider",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "288WW54436",
+              "CheckDigit": "3",
+              "CheckDigitScheme": "M11",
+              "IdType": "HC"
+            },
+            "Degree": "AS",
+            "Name": {
+              "Family": "Gilvary",
+              "Given": "Olenka",
+              "Second": "K",
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "M",
+            "Role": {
+              "Id": "CP",
+              "Text": "Consulting Provider",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "493KA05513",
+              "CheckDigit": "Q",
+              "CheckDigitScheme": "M11",
+              "IdType": "PEN"
+            },
+            "Degree": "FPNP",
+            "Name": {
+              "Family": "MacCaughen",
+              "Given": "Lucas",
+              "Second": "V",
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "R",
+            "Role": {
+              "Id": "AD",
+              "Text": "Admitting",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "315RO95964",
+              "CheckDigit": "W",
+              "CheckDigitScheme": "ISO",
+              "IdType": "JHN"
+            },
+            "Degree": "MME",
+            "Name": {
+              "Family": "Ainsby",
+              "Given": "Jasmine",
+              "Second": "K",
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "R",
+            "Role": {
+              "Id": "MDIR",
+              "Text": "Medical Director",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "448EZ52975",
+              "CheckDigit": "Q",
+              "CheckDigitScheme": "ISO",
+              "IdType": "NH"
+            },
+            "Degree": "BBA",
+            "Name": {
+              "Family": "Sessuns",
+              "Given": "Darb",
+              "Second": null,
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "I",
+            "Role": {
+              "Id": "AT",
+              "Text": "Attending",
+              "CodingSystem": "HL70443"
+            }
+          }
+        ],
+        "PatientClass": {
+          "Id": "C",
+          "Text": "Commercial Account",
+          "CodingSystem": "HL70004"
+        },
+        "Event": "A07"
+      },
+      {
+        "Patient": {
+          "Ids": [
+            {
+              "IdNumber": "JS57PU549399",
+              "CheckDigit": "0",
+              "CheckDigitScheme": "M11",
+              "IdType": "MR"
+            },
+            {
+              "IdNumber": "NA65HX860619",
+              "CheckDigit": "6",
+              "CheckDigitScheme": "ISO",
+              "IdType": "AN"
+            },
+            {
+              "IdNumber": "JL47UM389390",
+              "CheckDigit": "1",
+              "CheckDigitScheme": "BCV",
+              "IdType": "NCT"
+            },
+            {
+              "IdNumber": "PF27EG468762",
+              "CheckDigit": "0",
+              "CheckDigitScheme": "BCV",
+              "IdType": "OD"
+            }
+          ],
+          "Name": {
+            "Family": "Cuningham",
+            "Given": "Artemis",
+            "Second": "O",
+            "Suffix": null,
+            "Prefix": null
+          },
+          "MotherMaidenName": "Roiz",
+          "DOB": "1973-01-22T16:48:02Z",
+          "Gender": "M",
+          "Race": {
+            "Id": "2028-9",
+            "Text": "Asian",
+            "CodingSystem": "HL70005"
+          },
+          "Address": [
+            {
+              "Line1": "401 Clyde Gallagher Plaza",
+              "Line2": null,
+              "City": "Kingsport",
+              "State": "TN",
+              "Zip": "37665",
+              "Country": "US",
+              "Type": "M"
+            },
+            {
+              "Line1": "9 Helena Center",
+              "Line2": null,
+              "City": "Nashville",
+              "State": "TN",
+              "Zip": "37205",
+              "Country": "US",
+              "Type": "F"
+            },
+            {
+              "Line1": "1623 Mcguire Crossing",
+              "Line2": null,
+              "City": "Nashville",
+              "State": "TN",
+              "Zip": "37228",
+              "Country": "US",
+              "Type": "S"
+            }
+          ],
+          "Comm": [
+            {
+              "UseCode": "PRN",
+              "Type": "CP",
+              "PhoneNumber": "6698797755",
+              "Email": "",
+              "CountryCode": "+62",
+              "AreaCode": "669",
+              "LocalNumber": "8797755",
+              "UnformattedTelephoneNumber": "626698797755"
+            },
+            {
+              "UseCode": "ORN",
+              "Type": "CP",
+              "PhoneNumber": "6427032492",
+              "Email": "",
+              "CountryCode": "+45",
+              "AreaCode": "642",
+              "LocalNumber": "7032492",
+              "UnformattedTelephoneNumber": "456427032492"
+            },
+            {
+              "UseCode": "WPN",
+              "Type": "CP",
+              "PhoneNumber": "3259574105",
+              "Email": "",
+              "CountryCode": "+54",
+              "AreaCode": "325",
+              "LocalNumber": "9574105",
+              "UnformattedTelephoneNumber": "543259574105"
+            },
+            {
+              "UseCode": "NET",
+              "Type": "X.400",
+              "PhoneNumber": "",
+              "Email": "rcello3@feedburner.com",
+              "CountryCode": "",
+              "AreaCode": "",
+              "LocalNumber": "",
+              "UnformattedTelephoneNumber": ""
+            },
+            {
+              "UseCode": "PRN",
+              "Type": "PH",
+              "PhoneNumber": "8992776515",
+              "Email": "",
+              "CountryCode": "+63",
+              "AreaCode": "899",
+              "LocalNumber": "2776515",
+              "UnformattedTelephoneNumber": "638992776515"
+            },
+            {
+              "UseCode": "PRN",
+              "Type": "CP",
+              "PhoneNumber": "7334901127",
+              "Email": "",
+              "CountryCode": "+86",
+              "AreaCode": "733",
+              "LocalNumber": "4901127",
+              "UnformattedTelephoneNumber": "867334901127"
+            }
+          ],
+          "Language": {
+            "Id": "ru",
+            "Text": "Russian",
+            "CodingSystem": "urn:ietf:bcp:47"
+          },
+          "MaritalStatus": {
+            "Id": "W",
+            "Text": "Widowed",
+            "CodingSystem": "HL70002"
+          },
+          "Religion": {
+            "Id": "JEW",
+            "Text": "Jewish",
+            "CodingSystem": "HL70006"
+          },
+          "SSN": "516-57-4680",
+          "DriversLicense": {
+            "Number": "4170448216",
+            "State": "TN",
+            "ExpirationDate": "2024-03-28T16:48:02Z"
+          },
+          "EthnicGroup": {
+            "Id": "N",
+            "Text": "Not Hispanic or Latino",
+            "CodingSystem": "HL70189"
+          },
+          "MultipleBirthIndicator": "N",
+          "BirthOrder": null,
+          "DeathIndicator": "Y",
+          "DeathDateTime": null
+        },
+        "Providers": [
+          {
+            "Id": {
+              "IdNumber": "690VI54294",
+              "CheckDigit": "S",
+              "CheckDigitScheme": "BCV",
+              "IdType": "NPI"
+            },
+            "Degree": "PHE",
+            "Name": {
+              "Family": "Cafe",
+              "Given": "Micah",
+              "Second": "O",
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "A",
+            "Role": {
+              "Id": "PP",
+              "Text": "Primary Care Provider",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "805XI42660",
+              "CheckDigit": "A",
+              "CheckDigitScheme": "NPI",
+              "IdType": "DEA"
+            },
+            "Degree": "MEE",
+            "Name": {
+              "Family": "Davson",
+              "Given": "Bo",
+              "Second": "O",
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "REL",
+            "Role": {
+              "Id": "AT",
+              "Text": "Attending",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "477EB63438",
+              "CheckDigit": "R",
+              "CheckDigitScheme": "M11",
+              "IdType": "ASID"
+            },
+            "Degree": "BS",
+            "Name": {
+              "Family": "Avis",
+              "Given": "Frieda",
+              "Second": "M",
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "NAV",
+            "Role": {
+              "Id": "RP",
+              "Text": "Referring Provider",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "033YD77541",
+              "CheckDigit": "I",
+              "CheckDigitScheme": "NPI",
+              "IdType": "ESN"
+            },
+            "Degree": "MME",
+            "Name": {
+              "Family": "Bosket",
+              "Given": "Alley",
+              "Second": "G",
+              "Suffix": "Sr",
+              "Prefix": null
+            },
+            "NameTypeCode": "TEMP",
+            "Role": {
+              "Id": "CP",
+              "Text": "Consulting Provider",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "265TR32016",
+              "CheckDigit": "Z",
+              "CheckDigitScheme": "M10",
+              "IdType": "MB"
+            },
+            "Degree": "AE",
+            "Name": {
+              "Family": "Kynan",
+              "Given": "Brock",
+              "Second": "C",
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "M",
+            "Role": {
+              "Id": "AD",
+              "Text": "Admitting",
+              "CodingSystem": "HL70443"
+            }
+          },
+          {
+            "Id": {
+              "IdNumber": "322HP33768",
+              "CheckDigit": "A",
+              "CheckDigitScheme": "M10",
+              "IdType": "NBSNR"
+            },
+            "Degree": "BFA",
+            "Name": {
+              "Family": "De Roberto",
+              "Given": "Berni",
+              "Second": "F",
+              "Suffix": null,
+              "Prefix": null
+            },
+            "NameTypeCode": "K",
+            "Role": {
+              "Id": "RT",
+              "Text": "Referred to Provider",
+              "CodingSystem": "HL70443"
+            }
+          }
+        ],
+        "PatientClass": {
+          "Id": "C",
+          "Text": "Commercial Account",
+          "CodingSystem": "HL70004"
+        },
+        "Event": "A08"
+      }
+    ]
+  ],
+  "additionalItems": true,
+  "items": {
+    "$id": "#/items",
+    "anyOf": [
+      {
+        "$id": "#/items/anyOf/0",
+        "type": "object",
+        "title": "The first anyOf schema",
+        "description": "An explanation about the purpose of this instance.",
+        "default": {},
+        "examples": [
+          {
+            "Patient": {
+              "Ids": [
+                {
+                  "IdNumber": "PG23FK030030",
+                  "CheckDigit": "2",
+                  "CheckDigitScheme": "BCV",
+                  "IdType": "MR"
+                },
+                {
+                  "IdNumber": "TO64MN065772",
+                  "CheckDigit": "2",
+                  "CheckDigitScheme": "BCV",
+                  "IdType": "AN"
+                },
+                {
+                  "IdNumber": "LR78DM885590",
+                  "CheckDigit": "8",
+                  "CheckDigitScheme": "BCV",
+                  "IdType": "AND"
+                },
+                {
+                  "IdNumber": "ID75SM136214",
+                  "CheckDigit": "4",
+                  "CheckDigitScheme": "NPI",
+                  "IdType": "ANT"
+                }
+              ],
+              "Name": {
+                "Family": "Patrickson",
+                "Given": "Lillis",
+                "Second": "I",
+                "Suffix": null,
+                "Prefix": null
+              },
+              "MotherMaidenName": "Tallboy",
+              "DOB": "1998-01-18T16:48:01Z",
+              "Gender": "F",
+              "Race": {
+                "Id": "2076-8",
+                "Text": "Native Hawaiian or Other Pacific Islander",
+                "CodingSystem": "HL70005"
+              },
+              "Address": [
+                {
+                  "Line1": "76255 Harbort Park",
+                  "Line2": "Number 18",
+                  "City": "Memphis",
+                  "State": "TN",
+                  "Zip": "38136",
+                  "Country": "US",
+                  "Type": "M"
+                }
+              ],
+              "Comm": [
+                {
+                  "UseCode": "PRN",
+                  "Type": "CP",
+                  "PhoneNumber": "5791303873",
+                  "Email": "",
+                  "CountryCode": "+234",
+                  "AreaCode": "579",
+                  "LocalNumber": "1303873",
+                  "UnformattedTelephoneNumber": "2345791303873"
+                },
+                {
+                  "UseCode": "ORN",
+                  "Type": "PH",
+                  "PhoneNumber": "4108438947",
+                  "Email": "",
+                  "CountryCode": "+86",
+                  "AreaCode": "410",
+                  "LocalNumber": "8438947",
+                  "UnformattedTelephoneNumber": "864108438947"
+                },
+                {
+                  "UseCode": "WPN",
+                  "Type": "CP",
+                  "PhoneNumber": "5689724029",
+                  "Email": "",
+                  "CountryCode": "+62",
+                  "AreaCode": "568",
+                  "LocalNumber": "9724029",
+                  "UnformattedTelephoneNumber": "625689724029"
+                },
+                {
+                  "UseCode": "NET",
+                  "Type": "X.400",
+                  "PhoneNumber": "",
+                  "Email": "rscudders3@hexun.com",
+                  "CountryCode": "",
+                  "AreaCode": "",
+                  "LocalNumber": "",
+                  "UnformattedTelephoneNumber": ""
+                },
+                {
+                  "UseCode": "NET",
+                  "Type": "X.400",
+                  "PhoneNumber": "",
+                  "Email": "ogreed4@globo.com",
+                  "CountryCode": "",
+                  "AreaCode": "",
+                  "LocalNumber": "",
+                  "UnformattedTelephoneNumber": ""
+                },
+                {
+                  "UseCode": "PRS",
+                  "Type": "PH",
+                  "PhoneNumber": "8043015638",
+                  "Email": "",
+                  "CountryCode": "+62",
+                  "AreaCode": "804",
+                  "LocalNumber": "3015638",
+                  "UnformattedTelephoneNumber": "628043015638"
+                }
+              ],
+              "Language": {
+                "Id": "pl",
+                "Text": "Polish",
+                "CodingSystem": "urn:ietf:bcp:47"
+              },
+              "MaritalStatus": {
+                "Id": "O",
+                "Text": "Other",
+                "CodingSystem": "HL70002"
+              },
+              "Religion": {
+                "Id": "HOT",
+                "Text": "Hindu: Other",
+                "CodingSystem": "HL70006"
+              },
+              "SSN": "661-41-7685",
+              "DriversLicense": {
+                "Number": "1913688611",
+                "State": "TN",
+                "ExpirationDate": "2023-03-28T16:48:01Z"
+              },
+              "EthnicGroup": {
+                "Id": "N",
+                "Text": "Not Hispanic or Latino",
+                "CodingSystem": "HL70189"
+              },
+              "MultipleBirthIndicator": "Y",
+              "BirthOrder": 5,
+              "DeathIndicator": "Y",
+              "DeathDateTime": "2022-03-27T16:48:01Z"
+            },
+            "Providers": [
+              {
+                "Id": {
+                  "IdNumber": "714CW28081",
+                  "CheckDigit": "W",
+                  "CheckDigitScheme": "NPI",
+                  "IdType": "NPI"
+                },
+                "Degree": "HS",
+                "Name": {
+                  "Family": "O' Bee",
+                  "Given": "Jacklin",
+                  "Second": "B",
+                  "Suffix": null,
+                  "Prefix": null
+                },
+                "NameTypeCode": "B",
+                "Role": {
+                  "Id": "PP",
+                  "Text": "Primary Care Provider",
+                  "CodingSystem": "HL70443"
+                }
+              },
+              {
+                "Id": {
+                  "IdNumber": "031ZG66038",
+                  "CheckDigit": "H",
+                  "CheckDigitScheme": "M11",
+                  "IdType": "DEA"
+                },
+                "Degree": "MDA",
+                "Name": {
+                  "Family": "Speddin",
+                  "Given": "Wood",
+                  "Second": "T",
+                  "Suffix": "III",
+                  "Prefix": null
+                },
+                "NameTypeCode": "TEMP",
+                "Role": {
+                  "Id": "AT",
+                  "Text": "Attending",
+                  "CodingSystem": "HL70443"
+                }
+              },
+              {
+                "Id": {
+                  "IdNumber": "224VW91526",
+                  "CheckDigit": "I",
+                  "CheckDigitScheme": "ISO",
+                  "IdType": "MB"
+                },
+                "Degree": "BS",
+                "Name": {
+                  "Family": "Bigby",
+                  "Given": "Joshua",
+                  "Second": "M",
+                  "Suffix": null,
+                  "Prefix": null
+                },
+                "NameTypeCode": "T",
+                "Role": {
+                  "Id": "RP",
+                  "Text": "Referring Provider",
+                  "CodingSystem": "HL70443"
+                }
+              },
+              {
+                "Id": {
+                  "IdNumber": "288WW54436",
+                  "CheckDigit": "3",
+                  "CheckDigitScheme": "M11",
+                  "IdType": "HC"
+                },
+                "Degree": "AS",
+                "Name": {
+                  "Family": "Gilvary",
+                  "Given": "Olenka",
+                  "Second": "K",
+                  "Suffix": null,
+                  "Prefix": null
+                },
+                "NameTypeCode": "M",
+                "Role": {
+                  "Id": "CP",
+                  "Text": "Consulting Provider",
+                  "CodingSystem": "HL70443"
+                }
+              },
+              {
+                "Id": {
+                  "IdNumber": "493KA05513",
+                  "CheckDigit": "Q",
+                  "CheckDigitScheme": "M11",
+                  "IdType": "PEN"
+                },
+                "Degree": "FPNP",
+                "Name": {
+                  "Family": "MacCaughen",
+                  "Given": "Lucas",
+                  "Second": "V",
+                  "Suffix": null,
+                  "Prefix": null
+                },
+                "NameTypeCode": "R",
+                "Role": {
+                  "Id": "AD",
+                  "Text": "Admitting",
+                  "CodingSystem": "HL70443"
+                }
+              },
+              {
+                "Id": {
+                  "IdNumber": "315RO95964",
+                  "CheckDigit": "W",
+                  "CheckDigitScheme": "ISO",
+                  "IdType": "JHN"
+                },
+                "Degree": "MME",
+                "Name": {
+                  "Family": "Ainsby",
+                  "Given": "Jasmine",
+                  "Second": "K",
+                  "Suffix": null,
+                  "Prefix": null
+                },
+                "NameTypeCode": "R",
+                "Role": {
+                  "Id": "MDIR",
+                  "Text": "Medical Director",
+                  "CodingSystem": "HL70443"
+                }
+              },
+              {
+                "Id": {
+                  "IdNumber": "448EZ52975",
+                  "CheckDigit": "Q",
+                  "CheckDigitScheme": "ISO",
+                  "IdType": "NH"
+                },
+                "Degree": "BBA",
+                "Name": {
+                  "Family": "Sessuns",
+                  "Given": "Darb",
+                  "Second": null,
+                  "Suffix": null,
+                  "Prefix": null
+                },
+                "NameTypeCode": "I",
+                "Role": {
+                  "Id": "AT",
+                  "Text": "Attending",
+                  "CodingSystem": "HL70443"
+                }
+              }
+            ],
+            "PatientClass": {
+              "Id": "C",
+              "Text": "Commercial Account",
+              "CodingSystem": "HL70004"
+            },
+            "Event": "A07"
+          }
+        ],
+        "required": [
+          "Patient",
+          "Providers",
+          "PatientClass",
+          "Event"
+        ],
+        "properties": {
+          "Patient": {
+            "$id": "#/items/anyOf/0/properties/Patient",
+            "type": "object",
+            "title": "The Patient schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "Ids": [
+                  {
+                    "IdNumber": "PG23FK030030",
+                    "CheckDigit": "2",
+                    "CheckDigitScheme": "BCV",
+                    "IdType": "MR"
+                  },
+                  {
+                    "IdNumber": "TO64MN065772",
+                    "CheckDigit": "2",
+                    "CheckDigitScheme": "BCV",
+                    "IdType": "AN"
+                  },
+                  {
+                    "IdNumber": "LR78DM885590",
+                    "CheckDigit": "8",
+                    "CheckDigitScheme": "BCV",
+                    "IdType": "AND"
+                  },
+                  {
+                    "IdNumber": "ID75SM136214",
+                    "CheckDigit": "4",
+                    "CheckDigitScheme": "NPI",
+                    "IdType": "ANT"
+                  }
+                ],
+                "Name": {
+                  "Family": "Patrickson",
+                  "Given": "Lillis",
+                  "Second": "I",
+                  "Suffix": null,
+                  "Prefix": null
+                },
+                "MotherMaidenName": "Tallboy",
+                "DOB": "1998-01-18T16:48:01Z",
+                "Gender": "F",
+                "Race": {
+                  "Id": "2076-8",
+                  "Text": "Native Hawaiian or Other Pacific Islander",
+                  "CodingSystem": "HL70005"
+                },
+                "Address": [
+                  {
+                    "Line1": "76255 Harbort Park",
+                    "Line2": "Number 18",
+                    "City": "Memphis",
+                    "State": "TN",
+                    "Zip": "38136",
+                    "Country": "US",
+                    "Type": "M"
+                  }
+                ],
+                "Comm": [
+                  {
+                    "UseCode": "PRN",
+                    "Type": "CP",
+                    "PhoneNumber": "5791303873",
+                    "Email": "",
+                    "CountryCode": "+234",
+                    "AreaCode": "579",
+                    "LocalNumber": "1303873",
+                    "UnformattedTelephoneNumber": "2345791303873"
+                  },
+                  {
+                    "UseCode": "ORN",
+                    "Type": "PH",
+                    "PhoneNumber": "4108438947",
+                    "Email": "",
+                    "CountryCode": "+86",
+                    "AreaCode": "410",
+                    "LocalNumber": "8438947",
+                    "UnformattedTelephoneNumber": "864108438947"
+                  },
+                  {
+                    "UseCode": "WPN",
+                    "Type": "CP",
+                    "PhoneNumber": "5689724029",
+                    "Email": "",
+                    "CountryCode": "+62",
+                    "AreaCode": "568",
+                    "LocalNumber": "9724029",
+                    "UnformattedTelephoneNumber": "625689724029"
+                  },
+                  {
+                    "UseCode": "NET",
+                    "Type": "X.400",
+                    "PhoneNumber": "",
+                    "Email": "rscudders3@hexun.com",
+                    "CountryCode": "",
+                    "AreaCode": "",
+                    "LocalNumber": "",
+                    "UnformattedTelephoneNumber": ""
+                  },
+                  {
+                    "UseCode": "NET",
+                    "Type": "X.400",
+                    "PhoneNumber": "",
+                    "Email": "ogreed4@globo.com",
+                    "CountryCode": "",
+                    "AreaCode": "",
+                    "LocalNumber": "",
+                    "UnformattedTelephoneNumber": ""
+                  },
+                  {
+                    "UseCode": "PRS",
+                    "Type": "PH",
+                    "PhoneNumber": "8043015638",
+                    "Email": "",
+                    "CountryCode": "+62",
+                    "AreaCode": "804",
+                    "LocalNumber": "3015638",
+                    "UnformattedTelephoneNumber": "628043015638"
+                  }
+                ],
+                "Language": {
+                  "Id": "pl",
+                  "Text": "Polish",
+                  "CodingSystem": "urn:ietf:bcp:47"
+                },
+                "MaritalStatus": {
+                  "Id": "O",
+                  "Text": "Other",
+                  "CodingSystem": "HL70002"
+                },
+                "Religion": {
+                  "Id": "HOT",
+                  "Text": "Hindu: Other",
+                  "CodingSystem": "HL70006"
+                },
+                "SSN": "661-41-7685",
+                "DriversLicense": {
+                  "Number": "1913688611",
+                  "State": "TN",
+                  "ExpirationDate": "2023-03-28T16:48:01Z"
+                },
+                "EthnicGroup": {
+                  "Id": "N",
+                  "Text": "Not Hispanic or Latino",
+                  "CodingSystem": "HL70189"
+                },
+                "MultipleBirthIndicator": "Y",
+                "BirthOrder": 5,
+                "DeathIndicator": "Y",
+                "DeathDateTime": "2022-03-27T16:48:01Z"
+              }
+            ],
+            "required": [
+              "Ids",
+              "Name",
+              "MotherMaidenName",
+              "DOB",
+              "Gender",
+              "Race",
+              "Address",
+              "Comm",
+              "Language",
+              "MaritalStatus",
+              "Religion",
+              "SSN",
+              "DriversLicense",
+              "EthnicGroup",
+              "MultipleBirthIndicator",
+              "BirthOrder",
+              "DeathIndicator",
+              "DeathDateTime"
+            ],
+            "properties": {
+              "Ids": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/Ids",
+                "type": "array",
+                "title": "The Ids schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": [],
+                "examples": [
+                  [
+                    {
+                      "IdNumber": "PG23FK030030",
+                      "CheckDigit": "2",
+                      "CheckDigitScheme": "BCV",
+                      "IdType": "MR"
+                    },
+                    {
+                      "IdNumber": "TO64MN065772",
+                      "CheckDigit": "2",
+                      "CheckDigitScheme": "BCV",
+                      "IdType": "AN"
+                    }
+                  ]
+                ],
+                "additionalItems": true,
+                "items": {
+                  "$id": "#/items/anyOf/0/properties/Patient/properties/Ids/items",
+                  "anyOf": [
+                    {
+                      "$id": "#/items/anyOf/0/properties/Patient/properties/Ids/items/anyOf/0",
+                      "type": "object",
+                      "title": "The first anyOf schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "IdNumber": "PG23FK030030",
+                          "CheckDigit": "2",
+                          "CheckDigitScheme": "BCV",
+                          "IdType": "MR"
+                        }
+                      ],
+                      "required": [
+                        "IdNumber",
+                        "CheckDigit",
+                        "CheckDigitScheme",
+                        "IdType"
+                      ],
+                      "properties": {
+                        "IdNumber": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Ids/items/anyOf/0/properties/IdNumber",
+                          "type": "string",
+                          "title": "The IdNumber schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "PG23FK030030"
+                          ]
+                        },
+                        "CheckDigit": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Ids/items/anyOf/0/properties/CheckDigit",
+                          "type": "string",
+                          "title": "The CheckDigit schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "2"
+                          ]
+                        },
+                        "CheckDigitScheme": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Ids/items/anyOf/0/properties/CheckDigitScheme",
+                          "type": "string",
+                          "title": "The CheckDigitScheme schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "BCV"
+                          ]
+                        },
+                        "IdType": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Ids/items/anyOf/0/properties/IdType",
+                          "type": "string",
+                          "title": "The IdType schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "MR"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  ]
+                }
+              },
+              "Name": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/Name",
+                "type": "object",
+                "title": "The Name schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Family": "Patrickson",
+                    "Given": "Lillis",
+                    "Second": "I",
+                    "Suffix": null,
+                    "Prefix": null
+                  }
+                ],
+                "required": [
+                  "Family",
+                  "Given",
+                  "Second",
+                  "Suffix",
+                  "Prefix"
+                ],
+                "properties": {
+                  "Family": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Name/properties/Family",
+                    "type": "string",
+                    "title": "The Family schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Patrickson"
+                    ]
+                  },
+                  "Given": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Name/properties/Given",
+                    "type": "string",
+                    "title": "The Given schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Lillis"
+                    ]
+                  },
+                  "Second": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Name/properties/Second",
+                    "type": "string",
+                    "title": "The Second schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "I"
+                    ]
+                  },
+                  "Suffix": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Name/properties/Suffix",
+                    "type": "null",
+                    "title": "The Suffix schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  },
+                  "Prefix": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Name/properties/Prefix",
+                    "type": "null",
+                    "title": "The Prefix schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": null,
+                    "examples": [
+                      null
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "MotherMaidenName": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/MotherMaidenName",
+                "type": "string",
+                "title": "The MotherMaidenName schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Tallboy"
+                ]
+              },
+              "DOB": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/DOB",
+                "type": "string",
+                "title": "The DOB schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "1998-01-18T16:48:01Z"
+                ]
+              },
+              "Gender": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/Gender",
+                "type": "string",
+                "title": "The Gender schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "F"
+                ]
+              },
+              "Race": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/Race",
+                "type": "object",
+                "title": "The Race schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Id": "2076-8",
+                    "Text": "Native Hawaiian or Other Pacific Islander",
+                    "CodingSystem": "HL70005"
+                  }
+                ],
+                "required": [
+                  "Id",
+                  "Text",
+                  "CodingSystem"
+                ],
+                "properties": {
+                  "Id": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Race/properties/Id",
+                    "type": "string",
+                    "title": "The Id schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "2076-8"
+                    ]
+                  },
+                  "Text": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Race/properties/Text",
+                    "type": "string",
+                    "title": "The Text schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Native Hawaiian or Other Pacific Islander"
+                    ]
+                  },
+                  "CodingSystem": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Race/properties/CodingSystem",
+                    "type": "string",
+                    "title": "The CodingSystem schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "HL70005"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "Address": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/Address",
+                "type": "array",
+                "title": "The Address schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": [],
+                "examples": [
+                  [
+                    {
+                      "Line1": "76255 Harbort Park",
+                      "Line2": "Number 18",
+                      "City": "Memphis",
+                      "State": "TN",
+                      "Zip": "38136",
+                      "Country": "US",
+                      "Type": "M"
+                    }
+                  ]
+                ],
+                "additionalItems": true,
+                "items": {
+                  "$id": "#/items/anyOf/0/properties/Patient/properties/Address/items",
+                  "anyOf": [
+                    {
+                      "$id": "#/items/anyOf/0/properties/Patient/properties/Address/items/anyOf/0",
+                      "type": "object",
+                      "title": "The first anyOf schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "Line1": "76255 Harbort Park",
+                          "Line2": "Number 18",
+                          "City": "Memphis",
+                          "State": "TN",
+                          "Zip": "38136",
+                          "Country": "US",
+                          "Type": "M"
+                        }
+                      ],
+                      "required": [
+                        "Line1",
+                        "Line2",
+                        "City",
+                        "State",
+                        "Zip",
+                        "Country",
+                        "Type"
+                      ],
+                      "properties": {
+                        "Line1": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Address/items/anyOf/0/properties/Line1",
+                          "type": "string",
+                          "title": "The Line1 schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "76255 Harbort Park"
+                          ]
+                        },
+                        "Line2": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Address/items/anyOf/0/properties/Line2",
+                          "type": "string",
+                          "title": "The Line2 schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "Number 18"
+                          ]
+                        },
+                        "City": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Address/items/anyOf/0/properties/City",
+                          "type": "string",
+                          "title": "The City schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "Memphis"
+                          ]
+                        },
+                        "State": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Address/items/anyOf/0/properties/State",
+                          "type": "string",
+                          "title": "The State schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "TN"
+                          ]
+                        },
+                        "Zip": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Address/items/anyOf/0/properties/Zip",
+                          "type": "string",
+                          "title": "The Zip schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "38136"
+                          ]
+                        },
+                        "Country": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Address/items/anyOf/0/properties/Country",
+                          "type": "string",
+                          "title": "The Country schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "US"
+                          ]
+                        },
+                        "Type": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Address/items/anyOf/0/properties/Type",
+                          "type": "string",
+                          "title": "The Type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "M"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  ]
+                }
+              },
+              "Comm": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/Comm",
+                "type": "array",
+                "title": "The Comm schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": [],
+                "examples": [
+                  [
+                    {
+                      "UseCode": "PRN",
+                      "Type": "CP",
+                      "PhoneNumber": "5791303873",
+                      "Email": "",
+                      "CountryCode": "+234",
+                      "AreaCode": "579",
+                      "LocalNumber": "1303873",
+                      "UnformattedTelephoneNumber": "2345791303873"
+                    },
+                    {
+                      "UseCode": "ORN",
+                      "Type": "PH",
+                      "PhoneNumber": "4108438947",
+                      "Email": "",
+                      "CountryCode": "+86",
+                      "AreaCode": "410",
+                      "LocalNumber": "8438947",
+                      "UnformattedTelephoneNumber": "864108438947"
+                    }
+                  ]
+                ],
+                "additionalItems": true,
+                "items": {
+                  "$id": "#/items/anyOf/0/properties/Patient/properties/Comm/items",
+                  "anyOf": [
+                    {
+                      "$id": "#/items/anyOf/0/properties/Patient/properties/Comm/items/anyOf/0",
+                      "type": "object",
+                      "title": "The first anyOf schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "UseCode": "PRN",
+                          "Type": "CP",
+                          "PhoneNumber": "5791303873",
+                          "Email": "",
+                          "CountryCode": "+234",
+                          "AreaCode": "579",
+                          "LocalNumber": "1303873",
+                          "UnformattedTelephoneNumber": "2345791303873"
+                        }
+                      ],
+                      "required": [
+                        "UseCode",
+                        "Type",
+                        "PhoneNumber",
+                        "Email",
+                        "CountryCode",
+                        "AreaCode",
+                        "LocalNumber",
+                        "UnformattedTelephoneNumber"
+                      ],
+                      "properties": {
+                        "UseCode": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Comm/items/anyOf/0/properties/UseCode",
+                          "type": "string",
+                          "title": "The UseCode schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "PRN"
+                          ]
+                        },
+                        "Type": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Comm/items/anyOf/0/properties/Type",
+                          "type": "string",
+                          "title": "The Type schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "CP"
+                          ]
+                        },
+                        "PhoneNumber": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Comm/items/anyOf/0/properties/PhoneNumber",
+                          "type": "string",
+                          "title": "The PhoneNumber schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "5791303873"
+                          ]
+                        },
+                        "Email": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Comm/items/anyOf/0/properties/Email",
+                          "type": "string",
+                          "title": "The Email schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            ""
+                          ]
+                        },
+                        "CountryCode": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Comm/items/anyOf/0/properties/CountryCode",
+                          "type": "string",
+                          "title": "The CountryCode schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "+234"
+                          ]
+                        },
+                        "AreaCode": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Comm/items/anyOf/0/properties/AreaCode",
+                          "type": "string",
+                          "title": "The AreaCode schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "579"
+                          ]
+                        },
+                        "LocalNumber": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Comm/items/anyOf/0/properties/LocalNumber",
+                          "type": "string",
+                          "title": "The LocalNumber schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "1303873"
+                          ]
+                        },
+                        "UnformattedTelephoneNumber": {
+                          "$id": "#/items/anyOf/0/properties/Patient/properties/Comm/items/anyOf/0/properties/UnformattedTelephoneNumber",
+                          "type": "string",
+                          "title": "The UnformattedTelephoneNumber schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "2345791303873"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  ]
+                }
+              },
+              "Language": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/Language",
+                "type": "object",
+                "title": "The Language schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Id": "pl",
+                    "Text": "Polish",
+                    "CodingSystem": "urn:ietf:bcp:47"
+                  }
+                ],
+                "required": [
+                  "Id",
+                  "Text",
+                  "CodingSystem"
+                ],
+                "properties": {
+                  "Id": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Language/properties/Id",
+                    "type": "string",
+                    "title": "The Id schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "pl"
+                    ]
+                  },
+                  "Text": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Language/properties/Text",
+                    "type": "string",
+                    "title": "The Text schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Polish"
+                    ]
+                  },
+                  "CodingSystem": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Language/properties/CodingSystem",
+                    "type": "string",
+                    "title": "The CodingSystem schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "urn:ietf:bcp:47"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "MaritalStatus": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/MaritalStatus",
+                "type": "object",
+                "title": "The MaritalStatus schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Id": "O",
+                    "Text": "Other",
+                    "CodingSystem": "HL70002"
+                  }
+                ],
+                "required": [
+                  "Id",
+                  "Text",
+                  "CodingSystem"
+                ],
+                "properties": {
+                  "Id": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/MaritalStatus/properties/Id",
+                    "type": "string",
+                    "title": "The Id schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "O"
+                    ]
+                  },
+                  "Text": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/MaritalStatus/properties/Text",
+                    "type": "string",
+                    "title": "The Text schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Other"
+                    ]
+                  },
+                  "CodingSystem": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/MaritalStatus/properties/CodingSystem",
+                    "type": "string",
+                    "title": "The CodingSystem schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "HL70002"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "Religion": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/Religion",
+                "type": "object",
+                "title": "The Religion schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Id": "HOT",
+                    "Text": "Hindu: Other",
+                    "CodingSystem": "HL70006"
+                  }
+                ],
+                "required": [
+                  "Id",
+                  "Text",
+                  "CodingSystem"
+                ],
+                "properties": {
+                  "Id": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Religion/properties/Id",
+                    "type": "string",
+                    "title": "The Id schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "HOT"
+                    ]
+                  },
+                  "Text": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Religion/properties/Text",
+                    "type": "string",
+                    "title": "The Text schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Hindu: Other"
+                    ]
+                  },
+                  "CodingSystem": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/Religion/properties/CodingSystem",
+                    "type": "string",
+                    "title": "The CodingSystem schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "HL70006"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "SSN": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/SSN",
+                "type": "string",
+                "title": "The SSN schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "661-41-7685"
+                ]
+              },
+              "DriversLicense": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/DriversLicense",
+                "type": "object",
+                "title": "The DriversLicense schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Number": "1913688611",
+                    "State": "TN",
+                    "ExpirationDate": "2023-03-28T16:48:01Z"
+                  }
+                ],
+                "required": [
+                  "Number",
+                  "State",
+                  "ExpirationDate"
+                ],
+                "properties": {
+                  "Number": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/DriversLicense/properties/Number",
+                    "type": "string",
+                    "title": "The Number schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "1913688611"
+                    ]
+                  },
+                  "State": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/DriversLicense/properties/State",
+                    "type": "string",
+                    "title": "The State schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "TN"
+                    ]
+                  },
+                  "ExpirationDate": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/DriversLicense/properties/ExpirationDate",
+                    "type": "string",
+                    "title": "The ExpirationDate schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "2023-03-28T16:48:01Z"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "EthnicGroup": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/EthnicGroup",
+                "type": "object",
+                "title": "The EthnicGroup schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": {},
+                "examples": [
+                  {
+                    "Id": "N",
+                    "Text": "Not Hispanic or Latino",
+                    "CodingSystem": "HL70189"
+                  }
+                ],
+                "required": [
+                  "Id",
+                  "Text",
+                  "CodingSystem"
+                ],
+                "properties": {
+                  "Id": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/EthnicGroup/properties/Id",
+                    "type": "string",
+                    "title": "The Id schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "N"
+                    ]
+                  },
+                  "Text": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/EthnicGroup/properties/Text",
+                    "type": "string",
+                    "title": "The Text schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "Not Hispanic or Latino"
+                    ]
+                  },
+                  "CodingSystem": {
+                    "$id": "#/items/anyOf/0/properties/Patient/properties/EthnicGroup/properties/CodingSystem",
+                    "type": "string",
+                    "title": "The CodingSystem schema",
+                    "description": "An explanation about the purpose of this instance.",
+                    "default": "",
+                    "examples": [
+                      "HL70189"
+                    ]
+                  }
+                },
+                "additionalProperties": true
+              },
+              "MultipleBirthIndicator": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/MultipleBirthIndicator",
+                "type": "string",
+                "title": "The MultipleBirthIndicator schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Y"
+                ]
+              },
+              "BirthOrder": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/BirthOrder",
+                "type": "integer",
+                "title": "The BirthOrder schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": 0,
+                "examples": [
+                  5
+                ]
+              },
+              "DeathIndicator": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/DeathIndicator",
+                "type": "string",
+                "title": "The DeathIndicator schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Y"
+                ]
+              },
+              "DeathDateTime": {
+                "$id": "#/items/anyOf/0/properties/Patient/properties/DeathDateTime",
+                "type": "string",
+                "title": "The DeathDateTime schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "2022-03-27T16:48:01Z"
+                ]
+              }
+            },
+            "additionalProperties": true
+          },
+          "Providers": {
+            "$id": "#/items/anyOf/0/properties/Providers",
+            "type": "array",
+            "title": "The Providers schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": [],
+            "examples": [
+              [
+                {
+                  "Id": {
+                    "IdNumber": "714CW28081",
+                    "CheckDigit": "W",
+                    "CheckDigitScheme": "NPI",
+                    "IdType": "NPI"
+                  },
+                  "Degree": "HS",
+                  "Name": {
+                    "Family": "O' Bee",
+                    "Given": "Jacklin",
+                    "Second": "B",
+                    "Suffix": null,
+                    "Prefix": null
+                  },
+                  "NameTypeCode": "B",
+                  "Role": {
+                    "Id": "PP",
+                    "Text": "Primary Care Provider",
+                    "CodingSystem": "HL70443"
+                  }
+                },
+                {
+                  "Id": {
+                    "IdNumber": "031ZG66038",
+                    "CheckDigit": "H",
+                    "CheckDigitScheme": "M11",
+                    "IdType": "DEA"
+                  },
+                  "Degree": "MDA",
+                  "Name": {
+                    "Family": "Speddin",
+                    "Given": "Wood",
+                    "Second": "T",
+                    "Suffix": "III",
+                    "Prefix": null
+                  },
+                  "NameTypeCode": "TEMP",
+                  "Role": {
+                    "Id": "AT",
+                    "Text": "Attending",
+                    "CodingSystem": "HL70443"
+                  }
+                }
+              ]
+            ],
+            "additionalItems": true,
+            "items": {
+              "$id": "#/items/anyOf/0/properties/Providers/items",
+              "anyOf": [
+                {
+                  "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0",
+                  "type": "object",
+                  "title": "The first anyOf schema",
+                  "description": "An explanation about the purpose of this instance.",
+                  "default": {},
+                  "examples": [
+                    {
+                      "Id": {
+                        "IdNumber": "714CW28081",
+                        "CheckDigit": "W",
+                        "CheckDigitScheme": "NPI",
+                        "IdType": "NPI"
+                      },
+                      "Degree": "HS",
+                      "Name": {
+                        "Family": "O' Bee",
+                        "Given": "Jacklin",
+                        "Second": "B",
+                        "Suffix": null,
+                        "Prefix": null
+                      },
+                      "NameTypeCode": "B",
+                      "Role": {
+                        "Id": "PP",
+                        "Text": "Primary Care Provider",
+                        "CodingSystem": "HL70443"
+                      }
+                    }
+                  ],
+                  "required": [
+                    "Id",
+                    "Degree",
+                    "Name",
+                    "NameTypeCode",
+                    "Role"
+                  ],
+                  "properties": {
+                    "Id": {
+                      "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Id",
+                      "type": "object",
+                      "title": "The Id schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "IdNumber": "714CW28081",
+                          "CheckDigit": "W",
+                          "CheckDigitScheme": "NPI",
+                          "IdType": "NPI"
+                        }
+                      ],
+                      "required": [
+                        "IdNumber",
+                        "CheckDigit",
+                        "CheckDigitScheme",
+                        "IdType"
+                      ],
+                      "properties": {
+                        "IdNumber": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Id/properties/IdNumber",
+                          "type": "string",
+                          "title": "The IdNumber schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "714CW28081"
+                          ]
+                        },
+                        "CheckDigit": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Id/properties/CheckDigit",
+                          "type": "string",
+                          "title": "The CheckDigit schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "W"
+                          ]
+                        },
+                        "CheckDigitScheme": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Id/properties/CheckDigitScheme",
+                          "type": "string",
+                          "title": "The CheckDigitScheme schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "NPI"
+                          ]
+                        },
+                        "IdType": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Id/properties/IdType",
+                          "type": "string",
+                          "title": "The IdType schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "NPI"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "Degree": {
+                      "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Degree",
+                      "type": "string",
+                      "title": "The Degree schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "HS"
+                      ]
+                    },
+                    "Name": {
+                      "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Name",
+                      "type": "object",
+                      "title": "The Name schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "Family": "O' Bee",
+                          "Given": "Jacklin",
+                          "Second": "B",
+                          "Suffix": null,
+                          "Prefix": null
+                        }
+                      ],
+                      "required": [
+                        "Family",
+                        "Given",
+                        "Second",
+                        "Suffix",
+                        "Prefix"
+                      ],
+                      "properties": {
+                        "Family": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Name/properties/Family",
+                          "type": "string",
+                          "title": "The Family schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "O' Bee"
+                          ]
+                        },
+                        "Given": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Name/properties/Given",
+                          "type": "string",
+                          "title": "The Given schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "Jacklin"
+                          ]
+                        },
+                        "Second": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Name/properties/Second",
+                          "type": "string",
+                          "title": "The Second schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "B"
+                          ]
+                        },
+                        "Suffix": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Name/properties/Suffix",
+                          "type": "null",
+                          "title": "The Suffix schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": null,
+                          "examples": [
+                            null
+                          ]
+                        },
+                        "Prefix": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Name/properties/Prefix",
+                          "type": "null",
+                          "title": "The Prefix schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": null,
+                          "examples": [
+                            null
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    },
+                    "NameTypeCode": {
+                      "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/NameTypeCode",
+                      "type": "string",
+                      "title": "The NameTypeCode schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": "",
+                      "examples": [
+                        "B"
+                      ]
+                    },
+                    "Role": {
+                      "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Role",
+                      "type": "object",
+                      "title": "The Role schema",
+                      "description": "An explanation about the purpose of this instance.",
+                      "default": {},
+                      "examples": [
+                        {
+                          "Id": "PP",
+                          "Text": "Primary Care Provider",
+                          "CodingSystem": "HL70443"
+                        }
+                      ],
+                      "required": [
+                        "Id",
+                        "Text",
+                        "CodingSystem"
+                      ],
+                      "properties": {
+                        "Id": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Role/properties/Id",
+                          "type": "string",
+                          "title": "The Id schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "PP"
+                          ]
+                        },
+                        "Text": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Role/properties/Text",
+                          "type": "string",
+                          "title": "The Text schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "Primary Care Provider"
+                          ]
+                        },
+                        "CodingSystem": {
+                          "$id": "#/items/anyOf/0/properties/Providers/items/anyOf/0/properties/Role/properties/CodingSystem",
+                          "type": "string",
+                          "title": "The CodingSystem schema",
+                          "description": "An explanation about the purpose of this instance.",
+                          "default": "",
+                          "examples": [
+                            "HL70443"
+                          ]
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              ]
+            }
+          },
+          "PatientClass": {
+            "$id": "#/items/anyOf/0/properties/PatientClass",
+            "type": "object",
+            "title": "The PatientClass schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": {},
+            "examples": [
+              {
+                "Id": "C",
+                "Text": "Commercial Account",
+                "CodingSystem": "HL70004"
+              }
+            ],
+            "required": [
+              "Id",
+              "Text",
+              "CodingSystem"
+            ],
+            "properties": {
+              "Id": {
+                "$id": "#/items/anyOf/0/properties/PatientClass/properties/Id",
+                "type": "string",
+                "title": "The Id schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "C"
+                ]
+              },
+              "Text": {
+                "$id": "#/items/anyOf/0/properties/PatientClass/properties/Text",
+                "type": "string",
+                "title": "The Text schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "Commercial Account"
+                ]
+              },
+              "CodingSystem": {
+                "$id": "#/items/anyOf/0/properties/PatientClass/properties/CodingSystem",
+                "type": "string",
+                "title": "The CodingSystem schema",
+                "description": "An explanation about the purpose of this instance.",
+                "default": "",
+                "examples": [
+                  "HL70004"
+                ]
+              }
+            },
+            "additionalProperties": true
+          },
+          "Event": {
+            "$id": "#/items/anyOf/0/properties/Event",
+            "type": "string",
+            "title": "The Event schema",
+            "description": "An explanation about the purpose of this instance.",
+            "default": "",
+            "examples": [
+              "A07"
+            ]
+          }
+        },
+        "additionalProperties": true
+      }
+    ]
+  }
+}

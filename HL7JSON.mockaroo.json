@@ -1,0 +1,667 @@
+{
+  "num_rows": 3,
+  "file_format": "json",
+  "name": "HL7JSON",
+  "array": true,
+  "columns": [
+    {
+      "name": "Patient.Ids",
+      "null_percentage": 0,
+      "type": "JSON Array",
+      "minItems": 2,
+      "maxItems": 5,
+      "formula": null
+    },
+    {
+      "name": "Patient.Ids.__idSequence",
+      "null_percentage": 0,
+      "type": "Row Number",
+      "formula": null
+    },
+    {
+      "name": "Patient.Ids.__idType",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70203",
+      "column": "Value",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.Ids.IdNumber",
+      "null_percentage": 0,
+      "type": "Character Sequence",
+      "format": "^^##^^######",
+      "formula": null
+    },
+    {
+      "name": "Patient.Ids.CheckDigit",
+      "null_percentage": 0,
+      "type": "Character Sequence",
+      "format": "#",
+      "formula": null
+    },
+    {
+      "name": "Patient.Ids.CheckDigitScheme",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "BCV",
+        "ISO",
+        "M10",
+        "M11",
+        "NPI"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "Patient.Ids.IdType",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('__idSequence') == 1 then \"MR\" elsif field('__idSequence') == 2 then 'AN' else field('__idType') end",
+      "formula": null
+    },
+    {
+      "name": "Patient.Name.Family",
+      "null_percentage": 0,
+      "type": "Last Name",
+      "formula": null
+    },
+    {
+      "name": "Patient.Name.Given",
+      "null_percentage": 0,
+      "type": "First Name",
+      "formula": null
+    },
+    {
+      "name": "Patient.Name.Second",
+      "null_percentage": 0,
+      "type": "Character Sequence",
+      "format": "^",
+      "formula": null
+    },
+    {
+      "name": "Patient.Name.Suffix",
+      "null_percentage": 80,
+      "type": "Suffix",
+      "formula": null
+    },
+    {
+      "name": "Patient.Name.Prefix",
+      "null_percentage": 85,
+      "type": "Title",
+      "formula": null
+    },
+    {
+      "name": "Patient.MotherMaidenName",
+      "null_percentage": 0,
+      "type": "Last Name",
+      "formula": null
+    },
+    {
+      "name": "Patient.DOB",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "(now() - years(random(0,60)) - months(random(0,10)) - days(random(0,10))).strftime(\"%Y-%m-%dT%H:%M:%SZ\")",
+      "formula": null
+    },
+    {
+      "name": "Patient.Gender",
+      "null_percentage": 0,
+      "type": "Gender (abbrev)",
+      "formula": null
+    },
+    {
+      "name": "Patient.Race.Id",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70005",
+      "column": "Value",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.Race.Text",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70005",
+      "column": "Description",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.Race.CodingSystem",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70005",
+      "column": "CodingSystem",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.Address",
+      "null_percentage": 0,
+      "type": "JSON Array",
+      "minItems": 1,
+      "maxItems": 3,
+      "formula": null
+    },
+    {
+      "name": "Patient.Address.__seq",
+      "null_percentage": 0,
+      "type": "Row Number",
+      "formula": null
+    },
+    {
+      "name": "Patient.Address.__rndType",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70190",
+      "column": "Code",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.Address.Line1",
+      "null_percentage": 0,
+      "type": "Street Address",
+      "formula": null
+    },
+    {
+      "name": "Patient.Address.Line2",
+      "null_percentage": 75,
+      "type": "Regular Expression",
+      "value": "(Apt|Suite|Number) \\d{1,5}",
+      "formula": null
+    },
+    {
+      "name": "Patient.Address.City",
+      "null_percentage": 0,
+      "type": "City",
+      "formula": null
+    },
+    {
+      "name": "Patient.Address.State",
+      "null_percentage": 0,
+      "type": "State (abbrev)",
+      "onlyUSPlaces": true,
+      "formula": null
+    },
+    {
+      "name": "Patient.Address.Zip",
+      "null_percentage": 0,
+      "type": "Postal Code",
+      "formula": null
+    },
+    {
+      "name": "Patient.Address.Country",
+      "null_percentage": 0,
+      "type": "Country Code",
+      "formula": null
+    },
+    {
+      "name": "Patient.Address.Type",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('__seq') == 1 then \"M\" else field('__rndType') end",
+      "formula": null
+    },
+    {
+      "name": "Patient.Comm",
+      "null_percentage": 0,
+      "type": "JSON Array",
+      "minItems": 6,
+      "maxItems": 6,
+      "formula": null
+    },
+    {
+      "name": "Patient.Comm.__seq",
+      "null_percentage": 0,
+      "type": "Row Number",
+      "formula": null
+    },
+    {
+      "name": "Patient.Comm.__rndUse",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70201",
+      "column": "Code",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.Comm.__rndPhone",
+      "null_percentage": 0,
+      "type": "Phone",
+      "format": "+#-###-###-####",
+      "formula": ""
+    },
+    {
+      "name": "Patient.Comm.UseCode",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('__seq') == 1 then \"PRN\" elsif field('__seq') == 2 then \"ORN\" elsif field('__seq') == 3 then \"WPN\" elsif field('__seq') == 4 then \"NET\" else field('__rndUse') end",
+      "formula": null
+    },
+    {
+      "name": "Patient.Comm.Type",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('UseCode') == \"NET\" then \"X.400\" else /(PH|CP)/.gen end",
+      "formula": null
+    },
+    {
+      "name": "Patient.Comm.PhoneNumber",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('UseCode') != \"NET\" then field('__rndPhone').split('-')[1] + field('__rndPhone').split('-')[2] + field('__rndPhone').split('-')[3] else \"\" end",
+      "formula": null
+    },
+    {
+      "name": "Patient.Comm.Email",
+      "null_percentage": 0,
+      "type": "Email Address",
+      "formula": "if field('UseCode') == \"NET\" then this else \"\" end"
+    },
+    {
+      "name": "Patient.Comm.CountryCode",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('UseCode') != \"NET\" then field('__rndPhone').split('-')[0] else \"\" end",
+      "formula": "this[0,1]"
+    },
+    {
+      "name": "Patient.Comm.AreaCode",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('UseCode') != \"NET\" then field('__rndPhone').split('-')[1] else \"\" end",
+      "formula": null
+    },
+    {
+      "name": "Patient.Comm.LocalNumber",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('UseCode') != \"NET\" then field('__rndPhone').split('-')[2] + field('__rndPhone').split('-')[3] else \"\" end",
+      "formula": null
+    },
+    {
+      "name": "Patient.Comm.UnformattedTelephoneNumber",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('UseCode') != \"NET\" then field('__rndPhone').delete('^0-9') else \"\" end",
+      "formula": null
+    },
+    {
+      "name": "Patient.Language.Id",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "urn-ietf-bcp-47",
+      "column": "Code",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.Language.Text",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "urn-ietf-bcp-47",
+      "column": "Display",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.Language.CodingSystem",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "urn:ietf:bcp:47"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "Patient.MaritalStatus.Id",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70002",
+      "column": "Value",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.MaritalStatus.Text",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70002",
+      "column": "Description",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.MaritalStatus.CodingSystem",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "HL70002"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "Patient.Religion.Id",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70006",
+      "column": "Value",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.Religion.Text",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70006",
+      "column": "Description",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.Religion.CodingSystem",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "HL70006"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "Patient.SSN",
+      "null_percentage": 0,
+      "type": "SSN",
+      "formula": null
+    },
+    {
+      "name": "Patient.DriversLicense.Number",
+      "null_percentage": 0,
+      "type": "Character Sequence",
+      "format": "##########",
+      "formula": null
+    },
+    {
+      "name": "Patient.DriversLicense.State",
+      "null_percentage": 0,
+      "type": "State (abbrev)",
+      "onlyUSPlaces": true,
+      "formula": null
+    },
+    {
+      "name": "Patient.DriversLicense.ExpirationDate",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "(now()+years(random(1,10))).strftime(\"%Y-%m-%dT%H:%M:%SZ\")",
+      "formula": null
+    },
+    {
+      "name": "Patient.EthnicGroup.Id",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70189",
+      "column": "Value",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.EthnicGroup.Text",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70189",
+      "column": "Description",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Patient.EthnicGroup.CodingSystem",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "HL70189"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "Patient.MultipleBirthIndicator",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "Y",
+        "N"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "Patient.BirthOrder",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('Patient.MultipleBirthIndicator') == \"Y\" then /\\d{1}/.gen.to_i else nil end",
+      "formula": null
+    },
+    {
+      "name": "Patient.DeathIndicator",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "Y",
+        "N"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "Patient.DeathDateTime",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('Patient.MultipleBirthIndicator') == \"Y\" then (now()-days(random(1,10))).strftime(\"%Y-%m-%dT%H:%M:%SZ\") else nil end",
+      "formula": null
+    },
+    {
+      "name": "Providers",
+      "null_percentage": 0,
+      "type": "JSON Array",
+      "minItems": 1,
+      "maxItems": 7,
+      "formula": null
+    },
+    {
+      "name": "Providers.__seq",
+      "null_percentage": 0,
+      "type": "Row Number",
+      "formula": null
+    },
+    {
+      "name": "Providers.__idTypeCode",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70203",
+      "column": "Value",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Providers.Id.IdNumber",
+      "null_percentage": 0,
+      "type": "Character Sequence",
+      "format": "###^^#####",
+      "formula": null
+    },
+    {
+      "name": "Providers.Id.CheckDigit",
+      "null_percentage": 0,
+      "type": "Character Sequence",
+      "format": "%",
+      "formula": null
+    },
+    {
+      "name": "Providers.Id.CheckDigitScheme",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "BCV",
+        "ISO",
+        "M10",
+        "M11",
+        "NPI"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "Providers.Id.IdType",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "if field('__seq') == 1 then \"NPI\" elsif field('__seq') == 2 then 'DEA' else field('__idTypeCode') end",
+      "formula": null
+    },
+    {
+      "name": "Providers.Degree",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70360",
+      "column": "Value",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Providers.Name.Family",
+      "null_percentage": 0,
+      "type": "Last Name",
+      "formula": null
+    },
+    {
+      "name": "Providers.Name.Given",
+      "null_percentage": 0,
+      "type": "First Name",
+      "formula": null
+    },
+    {
+      "name": "Providers.Name.Second",
+      "null_percentage": 25,
+      "type": "Character Sequence",
+      "format": "^",
+      "formula": null
+    },
+    {
+      "name": "Providers.Name.Suffix",
+      "null_percentage": 90,
+      "type": "Suffix",
+      "formula": null
+    },
+    {
+      "name": "Providers.Name.Prefix",
+      "null_percentage": 95,
+      "type": "Title",
+      "formula": null
+    },
+    {
+      "name": "Providers.NameTypeCode",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70200",
+      "column": "Value",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Providers.Role.__rndRoleType",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70443",
+      "column": "Value",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "Providers.Role.Id",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "case field('__seq') when 1 then \"PP\" when 2 then \"AT\" when 3 then \"RP\" when 4 then \"CP\" when 5 then \"AD\" else field('Role.__rndRoleType') end",
+      "formula": null
+    },
+    {
+      "name": "Providers.Role.Text",
+      "null_percentage": 0,
+      "type": "Formula",
+      "value": "from_dataset(\"HL70443\",\"Description\", Value: field(\"Role.Id\"))",
+      "formula": null
+    },
+    {
+      "name": "Providers.Role.CodingSystem",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "HL70443"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "PatientClass.Id",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70004",
+      "column": "Value",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "PatientClass.Text",
+      "null_percentage": 0,
+      "type": "Dataset Column",
+      "dataset": "HL70004",
+      "column": "Description",
+      "selectionStyle": "random",
+      "formula": null
+    },
+    {
+      "name": "PatientClass.CodingSystem",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "HL70004"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    },
+    {
+      "name": "Event",
+      "null_percentage": 0,
+      "type": "Custom List",
+      "values": [
+        "A01",
+        "A02",
+        "A03",
+        "A04",
+        "A05",
+        "A06",
+        "A07",
+        "A08"
+      ],
+      "selectionStyle": "random",
+      "distribution": null,
+      "formula": null
+    }
+  ]
+}
