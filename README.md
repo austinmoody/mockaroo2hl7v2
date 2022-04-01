@@ -2,11 +2,11 @@
 
 This is a simple tool to generate HL7v2 messages from a specific [Mockaroo](https://mockaroo.com) JSON output format.  I needed a way to generate fake HL7v2 messages to test things like Mirth channels + wanted to play around with [Go](https://go.dev).
 
-The output HL7v2 is generating using Go [Text Templates](https://pkg.go.dev/text/template).  You can specify a template file when running, if one is not specified there is one in the main.go file.
+The output HL7v2 is generating using Go [Text Templates](https://pkg.go.dev/text/template).  You can specify a template file when running, if one is not specified there is one in the [main.go](main.go) file.
 
 ## The Input
 
-This utility expects a very specific JSON input, one which I use Mockaroo to setup.  There is a backup of the Mockaroo _schema_ in this repo named TODO.  
+This utility expects a very specific JSON input, one which I use Mockaroo to setup.  There is a backup of the Mockaroo _schema_ in this repo named [HL7JSON.mockaroo.json](HL7JSON.mockaroo.json).  
 
 A simple example:
 
@@ -188,8 +188,6 @@ This is something I added, just knowing that I might pipe generated messages thr
 
 This allows you to use the -0 flag with xargs to split things up.  
 
-TODO - maybe mention not using mllp and print0 together?
-
 ### Examples
 
 Let's say you have the simple JSON example at the top of this page saved in a file named _demo.json_.  You can convert that to an HL7 message and send to a host and port with this command:
@@ -264,7 +262,7 @@ Each file will have one HL7 message in it.
 
 ## Templates
 
-To generate HL7 messages the Encounter object (found in encounter.go) is passed to a Go [Text Template](https://pkg.go.dev/text/template).
+To generate HL7 messages the Encounter object (found in [encounter.go](encounter.go)) is passed to a Go [Text Template](https://pkg.go.dev/text/template).
 
 If an external template is not specified (via the -template argument) a default is used.  The default can be found in main.go in the DefaultTemplate function.
 
@@ -274,8 +272,8 @@ Will add some examples here at some point.
 
 ## Mockaroo Setup
 
-mockaroo2hl7v2 expects the input to be JSON of a specific layout. A generated JSON schema is in this repo named hl7_schema.json.
+mockaroo2hl7v2 expects the input to be JSON of a specific layout. A generated JSON schema is in this repo named [hl7_schema.json](hl7_schema.json).
 
 You could generate the JSON in any way you want.  I use Mockaroo for this, hence the mockaroo2hl7v2 name.
 
-I won't go into specifics about using Mockaroo, but it is a great tool if you need to generate fake data.  If you want to use Mockaroo, sign up for an account and import the file: HL7JSON.mockaroo.json located in this repo.  From the Mockaroo Schemas page hit the Restore From Backup button to make that happen.
+I won't go into specifics about using Mockaroo, but it is a great tool if you need to generate fake data.  If you want to use Mockaroo, sign up for an account and import the file: [HL7JSON.mockaroo.json](HL7JSON.mockaroo.json) located in this repo.  From the Mockaroo Schemas page hit the Restore From Backup button to make that happen.
