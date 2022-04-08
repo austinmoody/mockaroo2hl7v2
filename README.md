@@ -4,6 +4,16 @@ This is a simple tool to generate HL7v2 messages from a specific [Mockaroo](http
 
 The output HL7v2 is generating using Go [Text Templates](https://pkg.go.dev/text/template).  You can specify a template file when running, if one is not specified there is one in the [main.go](main.go) file.
 
+## Getting It
+
+Grab a file for your platform from the latest release: https://github.com/austinmoody/mockaroo2hl7v2/releases
+
+Install via go install:
+
+```
+go install github.com/austinmoody/mockaroo2hl7v2@latest
+```
+
 ## The Input
 
 This utility expects a very specific JSON input, one which I use Mockaroo to setup.  There is a backup of the Mockaroo _schema_ in this repo named [HL7JSON.mockaroo.json](HL7JSON.mockaroo.json).  
