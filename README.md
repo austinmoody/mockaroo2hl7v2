@@ -1,3 +1,5 @@
+[![Go Report Card](https://goreportcard.com/badge/github.com/austinmoody/mockaroo2hl7v2)](https://goreportcard.com/report/github.com/austinmoody/mockaroo2hl7v2)
+
 # mockaroo2hl7v2
 
 This is a simple tool to generate HL7v2 messages from a specific [Mockaroo](https://mockaroo.com) JSON output format.  I needed a way to generate fake HL7v2 messages to test things like Mirth channels + wanted to play around with [Go](https://go.dev).
